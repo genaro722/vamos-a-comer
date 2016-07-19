@@ -29,7 +29,7 @@ describe('Header component', function () {
   beforeEach(module('app', function ($provide) {
     $provide.factory('headerComponent', function () {
       return {
-        templateUrl: 'app/components/Header.html'
+        templateUrl: 'app/components/main/Header.html'
       };
     });
   }));

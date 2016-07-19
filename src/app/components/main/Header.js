@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('headerComponent', {
-    templateUrl: 'app/components/Header.html',
+    templateUrl: 'app/components/main/Header.html',
     controller: Header,
     bindings: {
       todos: '='

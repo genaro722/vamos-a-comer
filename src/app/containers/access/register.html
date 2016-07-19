@@ -3,17 +3,22 @@
     <span flex></span>
     <md-whiteframe class="md-whiteframe-8dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="column" layout-align="center center">
 <h3>
-          <span>Iniciar sesión</span>
+          <span>Registrarse</span>
         </h3>
+       <h4 class="text-center text-light"> {{tipoUsuario.rol}}</h4>
         <md-input-container>
             <label>Email</label>
-            <input ng-model="user._username">
+            <input type="email" ng-model="user.email">
         </md-input-container>
         <md-input-container>
             <label>Password</label>
-            <input ng-model="user._password" type="password">
+            <input ng-model="user.plainPassword.first" type="password">
         </md-input-container>
-       <md-button class="md-raised md-primary" ng-click="login()">
+        <md-input-container>
+            <label>Repita Password</label>
+            <input ng-model="user.plainPassword.second" type="password">
+        </md-input-container>
+       <md-button class="md-raised md-primary" ng-click="register()">
           Iniciar sesión
        </md-button>
        <md-button type="button" class="md-raised md-primary" ng-click="facebookSingin()">

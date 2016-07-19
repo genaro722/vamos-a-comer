@@ -1,7 +1,7 @@
 angular
   .module('app')
   .component('footerComponent', {
-    templateUrl: 'app/components/Footer.html',
+    templateUrl: 'app/components/main/Footer.html',
     controller: Footer,
     bindings: {
       completedCount: '<',

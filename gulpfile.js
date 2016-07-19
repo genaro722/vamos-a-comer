@@ -31,6 +31,7 @@ function watch(done) {
   ], gulp.parallel('inject'));
 
   gulp.watch(conf.path.src('app/**/*.html'), reloadBrowserSync);
+  gulp.watch(conf.path.src('app/**/**/*.html'), reloadBrowserSync);
   gulp.watch([
     conf.path.src('**/*.css')
   ], gulp.series('styles'));

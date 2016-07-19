@@ -1,7 +1,6 @@
-//module.exports = themeConfig;
+//  module.exports = themeConfig;
 /** @ngInject */
-angular
-  .module('app').config(['$mdThemingProvider',themeConfig]);
+angular.module('app').config(['$mdThemingProvider', themeConfig]);
 function themeConfig($mdThemingProvider) {
 //  $mdThemingProvider.theme('default')
 //    .dark();
