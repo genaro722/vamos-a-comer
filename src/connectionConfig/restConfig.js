@@ -1,6 +1,6 @@
-//  module.exports = restConfig;
 angular.module('app').config(['jwtInterceptorProvider', '$httpProvider', 'RestangularProvider', '$facebookProvider', restConfig])
-.constant('baseUrl', {url: "http://api.pase.fit/"});
+.constant('baseUrl', {url: "http://api.pase.fit/"})
+.constant('storagePrefix', {prefix: "pase.fit.storage-"});
 
 function restConfig(jwtInterceptorProvider, $httpProvider, RestangularProvider, $facebookProvider) {
   jwtInterceptorProvider.tokenGetter = ['config',

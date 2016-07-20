@@ -1,0 +1,4 @@
+[
+   {"rol": "Estudio", "number": "0", "send": "ROLE_STUDIO"},
+   {"rol": "Cliente", "number": "1", "send": "ROLE_CLIENT"}
+]

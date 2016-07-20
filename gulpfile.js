@@ -20,6 +20,7 @@ gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
 
 function reloadBrowserSync(cb) {
+  console.log("Recargando");
   browserSync.reload();
   cb();
 }

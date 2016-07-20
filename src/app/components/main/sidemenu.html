@@ -16,5 +16,13 @@
           This sidenav is locked open on your device. To go back to the default behavior,
           narrow your display.
         </p>
+         <md-list class="md-dense">
+      <md-list-item ng-repeat="item in menu">
+        <div class="md-list-item-text">
+          <h5>{{item.nombre}}</h5>
+        </div>
+        <md-divider ng-if="!$last"></md-divider>
+      </md-list-item>
+    </md-list>
       </md-content>
 </md-sidenav>

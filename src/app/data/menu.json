@@ -1,0 +1,4 @@
+[
+   {"id" : 0, "nombre": "Menu", "idTranslate": "MENU"},
+   {"id" : 2, "nombre": "Cliente", "idTranslate": "CLIENTE"}
+   ]

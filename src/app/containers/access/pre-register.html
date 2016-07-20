@@ -1,32 +1,26 @@
+<!--<md-content layout="column" layout-align="center center">-->
+<md-content layout="column">
+   <md-toolbar>
 
-<md-content layout-gt-sm="row" layout-padding layout-align="center center">
-    <span flex></span>
-    <md-whiteframe class="md-whiteframe-8dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="column" layout-align="center center">
-<h3>
-          <span>Registrarse</span>
-        </h3>
-       <h4 class="text-center text-light"> {{tipoUsuario.rol}}</h4>
-        <md-input-container>
-            <label>Email</label>
-            <input type="email" ng-model="user.email">
-        </md-input-container>
-        <md-input-container>
-            <label>Password</label>
-            <input ng-model="user.plainPassword.first" type="password">
-        </md-input-container>
-        <md-input-container>
-            <label>Repita Password</label>
-            <input ng-model="user.plainPassword.second" type="password">
-        </md-input-container>
-       <md-button class="md-raised md-primary" ng-click="register()">
-          Iniciar sesión
-       </md-button>
-       <md-button type="button" class="md-raised md-primary" ng-click="facebookSingin()">
-          <i class="fa fa-facebook"></i> 
-          Registrarse con Facebook
-       </md-button>
-    </md-whiteframe>
-    
-    <span flex></span>
+   </md-toolbar>
+   <md-content  layout="row">
+      <div flex></div>
+      <md-whiteframe class="md-whiteframe-8dp" flex="35" layout="column" layout-align="center center">
+         <h3>
+            <span>¿Que tipo de usuario eres?</span>
+         </h3>
+         <!--<div layout="row" flex layout-align="center center">-->
+         <div style='width: 100%'>
+            <md-grid-list md-cols="2" md-gutter="1em" md-row-height="150px">
+               <md-grid-tile  ng-repeat="tipo in tipos" style="background-image: url('app/img/img_SN.gif'); background-size: cover" ng-click="elegirUsuario($index)">
+                  <md-grid-tile-footer>
+                     <h3>{{tipo.rol}}</h3>
+                  </md-grid-tile-footer>
+               </md-grid-tile>
 
+            </md-grid-list>
+         </div>
+      </md-whiteframe>
+      <div flex></div>
+   </md-content>
 </md-content>

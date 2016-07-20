@@ -1,0 +1,26 @@
+<!--<md-content layout="column" layout-align="center center">-->
+<md-content layout="column">
+   <md-toolbar>
+
+   </md-toolbar>
+   <div layout="row">
+      <div flex></div>
+      <md-whiteframe class="md-whiteframe-8dp" flex="35" layout="column" layout-align="center center">
+         <h3>
+            <span>Recuperar contraseña</span>
+         </h3>
+         <md-input-container>
+            <label>Contraseña</label>
+            <input ng-model="email" type="password">
+         </md-input-container>
+         <md-input-container>
+            <label>Repetir contraseña</label>
+            <input ng-model="email" type="password">
+         </md-input-container>
+         <md-button ng-disabled="form.$invalid"  class="md-raised md-primary" ng-click="resetPassword()" >
+            Cambiar contraseña      
+         </md-button>
+      </md-whiteframe>
+      <div flex></div>
+   </div>
+</md-content>
