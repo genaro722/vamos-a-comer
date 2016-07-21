@@ -12,7 +12,8 @@
     "ng-facebook": "*",
     "jquery": "*",
     "components-font-awesome":"*",
-    "oclazyload":"*"
+    "oclazyload":"*",
+    "angular-google-maps": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0"

@@ -2,7 +2,8 @@ angular
   .module('app')
   .component('sidemenuComponent', {
     templateUrl: 'app/components/main/sidemenu.html',
-    controller: sideMenuCtrl
+//    controller: sideMenuCtrl
+    controller: mainCtrl
   });
 
 function sideMenuCtrl($scope, $http) {

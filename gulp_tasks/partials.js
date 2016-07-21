@@ -7,6 +7,8 @@ const conf = require('../conf/gulp.conf');
 gulp.task('partials', partials);
 
 function partials() {
+//  return gulp.src([conf.path.src('app/**/*.html'), conf.path.src('app/**/**/*.html'), conf.path.src('app/**/**/**/*.html')])
+//  return gulp.src([conf.path.src('app/**/*.html')])
   return gulp.src(conf.path.src('app/**/*.html'))
     .pipe(htmlmin())
     .pipe(angularTemplatecache('templateCacheHtml.js', {

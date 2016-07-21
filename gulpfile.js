@@ -14,13 +14,13 @@ gulp.task('inject', gulp.series(gulp.parallel('styles', 'scripts'), 'inject'));
 gulp.task('build', gulp.series('partials', gulp.parallel('inject', 'other'), 'build'));
 gulp.task('test', gulp.series('scripts', 'karma:single-run'));
 gulp.task('test:auto', gulp.series('watch', 'karma:auto-run'));
+//gulp.task('serve', gulp.series('inject', 'partials', 'watch', 'browsersync'));
 gulp.task('serve', gulp.series('inject', 'watch', 'browsersync'));
 gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
 
 function reloadBrowserSync(cb) {
-  console.log("Recargando");
   browserSync.reload();
   cb();
 }
@@ -33,9 +33,11 @@ function watch(done) {
 
   gulp.watch(conf.path.src('app/**/*.html'), reloadBrowserSync);
   gulp.watch(conf.path.src('app/**/**/*.html'), reloadBrowserSync);
+//  gulp.watch(conf.path.src('app/**/**/**/*.html'), reloadBrowserSync);
   gulp.watch([
     conf.path.src('**/*.css')
   ], gulp.series('styles'));
   gulp.watch(conf.path.src('**/*.js'), gulp.series('inject'));
   done();
+//  gulp.watch("*.html").on("change", reload);
 }

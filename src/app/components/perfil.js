@@ -3,7 +3,7 @@ angular.module('app')
 angular.module('app')
         .component('perfilEstudio', {templateUrl: 'app/components/perfil-estudio.html', controller: perfilCtrl});
 
-function perfilCtrl($scope, Client, Studio, Location) {
+function perfilCtrl($scope, Client, Studio, Location, uiGmapGoogleMapApi) {
   $scope.profile = {};
   $scope.location = {};
   $scope.modal = {};
@@ -69,7 +69,7 @@ function perfilCtrl($scope, Client, Studio, Location) {
     Location.customGET("", {studio: id}).then(function success(response) {
       console.log(response);
       $scope.locations = response;
-      $scope.addMarkers($scope.locations["hydra:member"]);
+//      $scope.addMarkers($scope.locations["hydra:member"]);
     }, function error(response) {
       console.log("Error al cargar ubicaciones");
       console.log(response);
@@ -196,48 +196,48 @@ function perfilCtrl($scope, Client, Studio, Location) {
   };
 
   //  Cosas de mapas
-  $scope.mapOptions = {
-    center: new google.maps.LatLng(10.241192, -66.859407),
-    zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+//  $scope.mapOptions = {
+//    center: new google.maps.LatLng(10.241192, -66.859407),
+//    zoom: 15,
+//    mapTypeId: google.maps.MapTypeId.ROADMAP
+//  };
 
-  $scope.addMarkers = function (array) {
-    console.log("Agregando marcadores");
-    $scope.myMap.setCenter({lat: parseFloat(array[0].locationY), lng: parseFloat(array[0].locationX)});
-    for (var i = 0; i < array.length; i++) {
-      console.log(array[i]);
-      $scope.markers.push(new google.maps.Marker({
-        map: $scope.myMap,
-        position: {lat: parseFloat(array[i].locationY), lng: parseFloat(array[i].locationX)},
-        title: array[i].locationName
-      }));
-    }
-    console.log($scope.markers);
-  };
+//  $scope.addMarkers = function (array) {
+//    console.log("Agregando marcadores");
+//    $scope.myMap.setCenter({lat: parseFloat(array[0].locationY), lng: parseFloat(array[0].locationX)});
+//    for (var i = 0; i < array.length; i++) {
+//      console.log(array[i]);
+//      $scope.markers.push(new google.maps.Marker({
+//        map: $scope.myMap,
+//        position: {lat: parseFloat(array[i].locationY), lng: parseFloat(array[i].locationX)},
+//        title: array[i].locationName
+//      }));
+//    }
+//    console.log($scope.markers);
+//  };
 
   $scope.goToLocation = function (location) {
     $scope.myMap.setCenter({lat: parseFloat(location.locationY), lng: parseFloat(location.locationX)});
   };
 
-  $scope.addMarker = function ($event, $params) {
-    console.log($scope.marker);
-    if ($scope.editingLocation === true) {
-      if ($scope.marker !== undefined) {
-        console.log("Entrando");
-        $scope.marker.setMap(null);
-        $scope.marker = {};
-      }
-      $scope.marker = new google.maps.Marker({
-        map: $scope.myMap,
-        position: $params[0].latLng
-      });
-      $scope.position = $params[0].latLng;
-      $scope.location.locationX = $scope.position.lng();
-      $scope.location.locationY = $scope.position.lat();
-      console.log($scope.location);
-    }
-  };
+//  $scope.addMarker = function ($event, $params) {
+//    console.log($scope.marker);
+//    if ($scope.editingLocation === true) {
+//      if ($scope.marker !== undefined) {
+//        console.log("Entrando");
+//        $scope.marker.setMap(null);
+//        $scope.marker = {};
+//      }
+//      $scope.marker = new google.maps.Marker({
+//        map: $scope.myMap,
+//        position: $params[0].latLng
+//      });
+//      $scope.position = $params[0].latLng;
+//      $scope.location.locationX = $scope.position.lng();
+//      $scope.location.locationY = $scope.position.lat();
+//      console.log($scope.location);
+//    }
+//  };
 
   $scope.tilesLoaded = function () {
     console.log("tilesLoaded");

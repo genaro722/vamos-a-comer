@@ -44,7 +44,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             url: '/dashboard',
             template: '<dashboard></dashboard>'
           })
-          .state('app.inside.estudio-perfil', {
+          .state('app.inside.studio-profile', {
             url: '/perfil-estudio',
             template: '<perfil-estudio></perfil-estudio>',
             resolve: {
