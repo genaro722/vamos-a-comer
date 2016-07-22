@@ -196,11 +196,33 @@ function perfilCtrl($scope, Client, Studio, Location, uiGmapGoogleMapApi) {
   };
 
   //  Cosas de mapas
-//  $scope.mapOptions = {
-//    center: new google.maps.LatLng(10.241192, -66.859407),
-//    zoom: 15,
-//    mapTypeId: google.maps.MapTypeId.ROADMAP
+  $scope.mapOptions = {
+    center: { latitude: 10.241192, longitude: -66.859407 },
+    zoom: 15
+  };
+//  $scope.marker={
+//    id: 0,
+//    coords: {
+//        latitude: 10.241192,
+//        longitude: -66.859407
+//      }
 //  };
+  $scope.markers=[
+    {
+    id: 0,
+    coords: {
+        latitude: 10.241192,
+        longitude: -66.859407
+      }
+  },
+    {
+    id: 1,
+    coords: {
+        latitude: 10.232322707473,
+        longitude: -66.854481473565
+      }
+  }
+];
 
 //  $scope.addMarkers = function (array) {
 //    console.log("Agregando marcadores");

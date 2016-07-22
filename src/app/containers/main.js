@@ -5,7 +5,17 @@ angular
           controller: mainCtrl
         });
 
-function mainCtrl($scope, $state, $mdSidenav, $log, $http) {
+function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia) {
+  $scope.conf = {
+    appName: "Pase.Fit"
+  };
+  
+  $http.get("app/data/menu.json").then(function success(response) {
+    $scope.menu = response.data;
+  }, function error(response) {
+    console.log("Error al crear el menu");
+  });
+  
   $scope.profile = function () {
     console.log("perfil");
     var pro = (JSON.parse(localStorage.getItem("pase.fit.storage-profiles_iri")))[0];
@@ -21,21 +31,7 @@ function mainCtrl($scope, $state, $mdSidenav, $log, $http) {
     $state.go("app.access.login");
   };
   $scope.toggleSideMenu = function () {
-    // Component lookup should always be available since we are not using `ng-if`
-//    $mdSidenav('left').close().then(function () {
-//      $log.debug("close LEFT is done");
-//    });
     $mdSidenav('left')
             .toggle();
-    $scope.lock();
   };
-  $scope.lock = function () {
-    return $mdSidenav('left').isOpen();
-  };
-
-  $http.get("app/data/menu.json").then(function success(response) {
-    $scope.menu = response.data;
-  }, function error(response) {
-    console.log("Error al crear el menu");
-  });
 }

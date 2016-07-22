@@ -16,6 +16,7 @@ gulp.task('test', gulp.series('scripts', 'karma:single-run'));
 gulp.task('test:auto', gulp.series('watch', 'karma:auto-run'));
 //gulp.task('serve', gulp.series('inject', 'partials', 'watch', 'browsersync'));
 gulp.task('serve', gulp.series('inject', 'watch', 'browsersync'));
+gulp.task('serve:other', gulp.series('inject', 'other', 'watch', 'browsersync'));
 gulp.task('serve:dist', gulp.series('default', 'browsersync:dist'));
 gulp.task('default', gulp.series('clean', 'build'));
 gulp.task('watch', watch);
@@ -25,15 +26,25 @@ function reloadBrowserSync(cb) {
   cb();
 }
 
+function partials() {
+//  return gulp.src(conf.path.src('app/**/*.html'))
+//    .pipe(htmlmin())
+//    .pipe(angularTemplatecache('templateCacheHtml.js', {
+//      module: conf.ngModule,
+//      root: 'app'
+//    }))
+//    .pipe(gulp.dest(conf.path.tmp()));
+}
+
 function watch(done) {
   gulp.watch([
     conf.path.src('index.html'),
     'bower.json'
   ], gulp.parallel('inject'));
 
-  gulp.watch(conf.path.src('app/**/*.html'), reloadBrowserSync);
-  gulp.watch(conf.path.src('app/**/**/*.html'), reloadBrowserSync);
-//  gulp.watch(conf.path.src('app/**/**/**/*.html'), reloadBrowserSync);
+//  Editado por Nestor para poder actualizar el html al cambiarlo
+  gulp.watch(conf.path.src('app/**/*.html'), gulp.series('partials',reloadBrowserSync));
+//  gulp.watch(conf.path.src('app/**/**/*.html'), gulp.series('partials',reloadBrowserSync));
   gulp.watch([
     conf.path.src('**/*.css')
   ], gulp.series('styles'));
@@ -41,3 +52,6 @@ function watch(done) {
   done();
 //  gulp.watch("*.html").on("change", reload);
 }
+
+
+

@@ -5,6 +5,7 @@ angular.module('app')
         });
 
 function App($rootScope, $scope, $state, jwtHelper, Restangular) {
+  $scope.title="Pase.Fit";
   function comprobarSesion(toState) {
     console.log("Comprobando sesión");
     if (toState === "app.access.login" ||
