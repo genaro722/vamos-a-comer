@@ -3,3 +3,12 @@
 }
 
 .angular-google-map-container { height: 400px; }
+
+/***  LOGIN          ****/
+
+.login-1{
+    background-image: url("../app/img/login-fondo-3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 700px !important;
+}

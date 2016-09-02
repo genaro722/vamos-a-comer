@@ -1,8 +1,10 @@
-angular.module('app').config(['jwtInterceptorProvider', '$httpProvider', 'RestangularProvider', '$facebookProvider', restConfig])
+angular.module('app').config(['jwtInterceptorProvider',
+  '$httpProvider', 'RestangularProvider', '$facebookProvider', restConfig])
 .constant('baseUrl', {url: "http://api.pase.fit/"})
 .constant('storagePrefix', {prefix: "pase.fit.storage-"});
 
 function restConfig(jwtInterceptorProvider, $httpProvider, RestangularProvider, $facebookProvider) {
+//  si la version de angular-jwt cambia de 0.0.9 hacia arriba da error en este config
   jwtInterceptorProvider.tokenGetter = ['config',
     function (config) {
       // Skip authentication for any requests ending in .html
@@ -12,6 +14,7 @@ function restConfig(jwtInterceptorProvider, $httpProvider, RestangularProvider, 
       return localStorage.getItem('pase.fit.storage-token');
     }];
   $httpProvider.interceptors.push('jwtInterceptor');
+  
   //  Usar esta base cuando se pruebe arriba
   RestangularProvider.setBaseUrl('http://api.pase.fit/api');
   //  Usar esta base cuando se pruebe en local

@@ -1,0 +1,35 @@
+<md-content flex layout="column" class="login-1">
+    <div layout="row">
+        <div flex></div>
+        <!--<md-whiteframe class="md-whiteframe-8dp" flex="35" layout="column" layout-align="center center">-->
+
+        <md-card class="" flex="35" layout="column" layout-align="center center">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Iniciar sesión</span>
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="user._username">
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="user._password" type="password">
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="column" layout-align="start">
+                <md-button class="md-raised md-primary" ng-click="login()">
+                    Iniciar sesión
+                </md-button>
+                <md-button type="button" class="md-raised md-primary" ng-click="facebookSingin()">
+                    <i class="fa fa-facebook"></i> 
+                    Registrarse con Facebook
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <div flex></div>
+    </div>
+</md-content>

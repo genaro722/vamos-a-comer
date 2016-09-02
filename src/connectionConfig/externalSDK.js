@@ -24,7 +24,7 @@ angular.module('app').run(function externalSDK() {
   }
 }).run(['$animate', '$log',
   function ($animate, $log) {
-    $log.info('Animations enabled: ', true);
+//    $log.info('Animations enabled: ', true);
     $animate.enabled(true);
   }]);
 

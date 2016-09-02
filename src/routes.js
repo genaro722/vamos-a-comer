@@ -4,7 +4,7 @@ angular
 
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-  $locationProvider.html5Mode(true).hashPrefix('!');
+//  $locationProvider.html5Mode(true).hashPrefix('!');
   $urlRouterProvider.otherwise('/access/login');
 
   $stateProvider
@@ -14,11 +14,19 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           })
           .state('app.access', {
             url: 'access',
-            template: '<ui-view></ui-view>'
+            template: '<access></access>'
           })
           .state('app.access.login', {
             url: '/login',
-            template: '<login-component></login-component>'
+//            template: '<login-component></login-component>'
+            template: '<login></login>'
+//            component: 'login'
+          })
+          .state('app.access.login1', {
+            url: '/login1',
+//            template: '<login-component></login-component>'
+            template: '<login1></login1>'
+//            component: 'login'
           })
           .state('app.access.register', {
             url: '/register',

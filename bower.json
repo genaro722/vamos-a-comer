@@ -7,7 +7,7 @@
     "angular-material": "*",
     "angular-animate": "*",
     "angular-aria": "*",
-    "angular-jwt": "*",
+    "angular-jwt": "0.0.9",
     "restangular": "*",
     "ng-facebook": "*",
     "jquery": "*",
@@ -22,5 +22,8 @@
     "todomvc-app-css": {
       "main": "index.css"
     }
+  },
+  "resolutions": {
+    "angular": "~1.5.0"
   }
 }
