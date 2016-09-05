@@ -1,39 +1,46 @@
-<md-content layout="column">
-   <md-toolbar>
-
-   </md-toolbar>
-   <md-content  layout="row">
-      <div flex></div>
-      <md-whiteframe class="md-whiteframe-8dp" flex="35" layout="column" layout-align="center center">
-         <h3>
-            <span>Registrarse</span>
-         </h3>
-         <h4 class="text-center text-light"> {{tipoUsuario.rol}}</h4>
-         <md-input-container>
-            <label>Email</label>
-            <input type="email" ng-model="user.email">
-         </md-input-container>
-         <md-input-container>
-            <label>Password</label>
-            <input ng-model="user.plainPassword.first" type="password">
-         </md-input-container>
-         <md-input-container>
-            <label>Repita Password</label>
-            <input ng-model="user.plainPassword.second" type="password">
-         </md-input-container>
-         <md-button class="md-raised md-primary" ng-click="register()">
-            Registrarse
-         </md-button>
-         <md-button type="button" class="md-raised md-primary" ng-click="facebookSingin()">
-            <i class="fa fa-facebook"></i> 
-            Registrarse con Facebook
-         </md-button>
-         <div layout='row'>
-            <a class="pull-right"  ui-sref="app.access.login" title="Sign Up" ng-hide="sending">Iniciar Sesión</a>
-
-            <a class="pull-left margin-top-10" ui-sref="app.access.forgotPwd" title="Password Lost and Found">¿Olvido la contraseña?</a>
-         </div>
-      </md-whiteframe>
-      <div flex></div>
-   </md-content>
+<md-content  layout="column" class="login-1">
+    <div layout="row"  layout-padding layout-align="center center">
+        <div flex hide-xs show-gt-sm></div>
+        <md-card layout="column" layout-align="center center">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Registrarse</span>
+                    <span class="md-subhead">{{tipoUsuario.rol}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content flex layout="column" layout-align="center">
+                <md-input-container>
+                    <label>Email</label>
+                    <input type="email" ng-model="user.email">
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="user.plainPassword.first" type="password">
+                </md-input-container>
+                <md-input-container>
+                    <label>Repita Password</label>
+                    <input ng-model="user.plainPassword.second" type="password">
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="column" layout-align="start">
+                    <md-button class="md-raised md-primary" ng-click="register()">
+                    Registrarse
+                </md-button>
+                <md-button type="button" class="md-raised md-primary" ng-click="facebookSingin()">
+                    <i class="fa fa-facebook"></i> 
+                    Registrarse con Facebook
+                </md-button>                
+            </md-card-actions>
+            <md-card-actions layout="row" layout-align="center center">
+                <md-button class="" ui-sref="app.access.login">
+                    Iniciar sesión
+                </md-button>
+                <md-button type="button" class="" ui-sref="app.access.forgotPwd">
+                    <i class="fa fa-facebook"></i> 
+                    Olvide la contraseña
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <div flex hide-xs show-gt-sm></div>
+    </div>
 </md-content>

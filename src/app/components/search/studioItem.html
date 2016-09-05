@@ -1,0 +1,39 @@
+<div flex layout="column"
+     layout-padding>
+   <!--<img src="{{$ctrl.studio.studioLogo}}" alt="image"--> 
+
+   <img src="http://lorempixel.com/300/300/sports/Dummy-Text/" alt="image" 
+        style="position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.55;">
+
+   <div style="position: relative;
+        z-index: 2;"
+        layout="column"
+        layout-padding>
+      <!--<h3 class="pf-font-default white-text font-24-pt">{{$ctrl.studio.studioName}}</h3>-->
+      <div flex='50' layout="column" layout-align='center start' layout-padding>
+         <div flex-lg='50' flex-md='60' flex-sm="70" flex-xs="85" layout="column" layout-align='center start' layout-padding>
+            <md-button ui-sref='app.inside.studio-profile-public({id: $ctrl.studio.id})'
+                       class="pf-font-default white-text font-36 md-headline">
+               {{$ctrl.studio.studioName}}
+            </md-button>
+            <!--<span class="pf-font-default white-text font-48 md-headline" show-gt-sm hide-xs hide-sm>{{$ctrl.studio.studioName}}</span>-->
+            
+<!--            <span  class="pf-font-default white-text font-36 md-headline" hide-xs show-sm hide-gt-sm>{{$ctrl.studio.studioName}}</span>
+            <span  class="pf-font-default white-text font-34-pt md-headline" show-xs hide-gt-xs>{{$ctrl.studio.studioName}}</span>-->
+         </div>
+         <div flex-lg='50' flex-md='40' flex-sm="30" flex-xs="15" layout="column" layout-align='center start' layout-padding>
+            <span class="pf-font-default white-text font-14-pt" show-xs hide-sm show-gt-sm>{{$ctrl.studio.studioCityName}}</span>
+         </div>
+      </div>
+
+      <md-divider class="divider-white-1"></md-divider>
+      <div flex='50' layout-align='center start' layout-padding>      
+         <stars config="$ctrl.starConfig"></stars>
+      </div>
+   </div>
+</div>

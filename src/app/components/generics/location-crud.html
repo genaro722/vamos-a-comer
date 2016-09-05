@@ -1,0 +1,63 @@
+<md-card flex>
+   <md-card-title ng-if="$ctrl.config.header">
+      <md-card-title-text>
+         <span class="md-headline">
+            <md-icon>
+               location_on
+            </md-icon>
+            Ubicaciones
+            <md-button class="md-icon-button" ng-if="$ctrl.config.crud" ng-click="$ctrl.allowEditLocations()" ng-hide="$ctrl.editingLocation">
+               <md-tooltip md-direction="bottom">
+                  Agregar Ubicación
+               </md-tooltip>
+               <md-icon>add_location</md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-if="$ctrl.config.crud" ng-click="$ctrl.preSaveLocation()" ng-show="$ctrl.editingLocation">
+               <md-tooltip md-direction="bottom">
+                  Listo
+               </md-tooltip>
+               <md-icon>
+                  done
+               </md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-if="$ctrl.config.crud" ng-click="$ctrl.cancelEditLocation()" ng-show="$ctrl.editingLocation">
+               <md-tooltip md-direction="bottom">
+                  Cancelar
+               </md-tooltip>
+               <md-icon>
+                  cancel
+               </md-icon>
+            </md-button>
+         </span>
+      </md-card-title-text>
+   </md-card-title>
+   <md-card-content layout="row">
+      <md-content flex="30" ng-if="$ctrl.config.crud">
+         <md-input-container ng-show='$ctrl.editingLocation'>
+            <label>Nombre de la ubicación</label>
+            <input ng-model="$ctrl.markers[0].id" type="text">
+         </md-input-container>
+         <md-input-container ng-show='$ctrl.editingLocation'>
+            <label>Descripción de la ubicación</label>
+            <input ng-model="$ctrl.markers[0].locationAbout" type="text">
+         </md-input-container>
+         <md-list ng-hide='$ctrl.editingLocation'>
+            <md-header class="md-no-sticky">Ubicaciones</md-header>
+            <md-list-item ng-repeat="location in $ctrl.locations" ng-click="$ctrl.goToLocation(location)" aria-label="location">
+               <img ng-src="http://lorempixel.com/20/20/city" class="md-avatar" alt="..."/>
+               <p>{{location.locationName}}</p>
+               <md-button class="md-icon-button" ng-click="$ctrl.preDeleteLocation(location)">
+                  <md-icon>delete</md-icon>
+               </md-button>
+               <md-divider ></md-divider>
+            </md-list-item>
+         </md-list>
+      </md-content>
+      <md-content flex>
+         <ui-gmap-google-map center='$ctrl.mapOptions.center' zoom='$ctrl.mapOptions.zoom' events='$ctrl.mapOptions.events'>
+            <ui-gmap-marker ng-repeat="marker in $ctrl.markers" coords="marker.coords" idkey="marker.id">
+            </ui-gmap-marker>
+         </ui-gmap-google-map>
+      </md-content>      
+   </md-card-content>
+</md-card>

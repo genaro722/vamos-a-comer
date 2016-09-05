@@ -34,7 +34,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           })
           .state('app.access.pre-register', {
             url: '/pre-register',
-            template: '<type-register-component></type-register-component>'
+//            template: '<type-register-component></type-register-component>'
+            template: '<type-register></type-register>'
           })
           .state('app.access.resetPwd', {
             url: '/resetPwd',
@@ -45,23 +46,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             template: '<forgot-pwd-component></user-register-component>'
           })
           .state('app.inside', {
-            url: 'pase-fit',
+            url: 'main',
             template: '<main-component></main-component>'
           })
-          .state('app.inside.dashboard', {
-            url: '/dashboard',
-            template: '<dashboard></dashboard>'
-          })
-          .state('app.inside.studio-profile', {
-            url: '/perfil-estudio',
-            template: '<perfil-estudio></perfil-estudio>',
-            resolve: {
-              deps: ['$ocLazyLoad',
-                function ($ocLazyLoad) {
-                  return $ocLazyLoad.load('app/factory/clientFactory.js');
-                }
-              ]
-            }
+          .state('app.inside.search', {
+            url: '/search',
+            template: '<main-search></main-search>'
           })
           ;
 }

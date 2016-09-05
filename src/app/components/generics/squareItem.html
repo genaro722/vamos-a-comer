@@ -1,0 +1,40 @@
+<div flex layout="column"
+     layout-padding>
+   <img src="{{$ctrl.config.background.image}}" alt="image" 
+        style="position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: {{$ctrl.config.background.opacity}};">
+
+   <div style="position: relative;
+        z-index: 2;"
+        layout="column"
+        layout-padding>
+      <div flex='50' layout="column" layout-align='center start' layout-padding>
+         <div flex-lg='50' flex-md='60' flex-sm="70" flex-xs="85" layout="column" layout-align='center start' layout-padding>
+            <!--<md-button ui-sref='app.inside.studio-profile-public({id: $ctrl.studio.id})'-->
+            <md-button ng-click="$ctrl.config.header.action()"
+                       class="pf-font-default white-text font-48 md-headline">
+               {{$ctrl.config.item[$ctrl.config.header.text]}}
+            </md-button>
+         </div>
+         <div flex-lg='50' flex-md='40' flex-sm="30" flex-xs="15" layout="column" layout-align='center start' layout-padding>
+            <!--<span class="pf-font-default white-text font-12-pt" show-xs hide-sm show-gt-sm>{{$ctrl.item.subtitle}}</span>-->
+            <span class="pf-font-default white-text font-18-pt" show-xs hide-sm show-gt-sm>{{$ctrl.config.item[$ctrl.config.subheader]}}</span>
+         </div>
+      </div>
+
+      <md-divider class="divider-white-1"></md-divider>
+      <div flex='50' layout-align='center start' layout-padding> 
+         <div flex-lg='50' flex-md='60' flex-sm="70" flex-xs="85" layout="column" layout-align='center start' layout-padding>
+            <md-button ng-click="$ctrl.config.main.action()"
+                       class="pf-font-default white-text font-18-pt">
+               {{$ctrl.config.item[$ctrl.config.main.text]}}
+            </md-button>
+         </div>
+         <stars config="$ctrl.starConfig"></stars>
+      </div>
+   </div>
+</div>

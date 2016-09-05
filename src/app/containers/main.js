@@ -6,9 +6,7 @@ angular
         });
 
 function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia) {
-  $scope.conf = {
-    appName: "Pase.Fit"
-  };
+  console.log("mainCtrl");
   
   $http.get("app/data/menu.json").then(function success(response) {
     $scope.menu = response.data;

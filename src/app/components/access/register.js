@@ -1,14 +1,17 @@
 angular.module('app')
-        .component('regMainComponent', {templateUrl: 'app/containers/access/register.html', controller: registerCtrl})
-        .component('typeRegisterComponent', {templateUrl: 'app/containers/access/pre-register.html', controller: registerCtrl});
+        .component('regMainComponent', {templateUrl: 'app/components/access/register.html', controller: registerCtrl})
+//        .component('typeRegisterComponent', {templateUrl: 'app/components/access/pre-register.html', controller: registerCtrl});
+        .component('typeRegister', {templateUrl: 'app/components/access/pre-register.html', controller: registerCtrl});
 
-function registerCtrl($scope, $http, $state, $mdDialog, $log, $window, $timeout, $facebook, baseUrl) {
-  $scope.modal = {};
-  $scope.authError = null;
-  $scope.sending = false;
+function registerCtrl($scope, $http, $state, $mdDialog, $timeout, $facebook, baseUrl) {
+  var $ctrl = this;
+  $ctrl.modal = {};
+  $ctrl.authError = null;
+  $ctrl.sending = false;
 
   $http.get("app/data/users.json").then(function (response) {
-    $scope.tipos = response.data;
+    $ctrl.tipos = response.data;
+    console.log($ctrl.tipos);
   }, function () {
 
   });
@@ -16,53 +19,53 @@ function registerCtrl($scope, $http, $state, $mdDialog, $log, $window, $timeout,
   var success = function (response) {
     var valid = response.data.valid;
     if (valid) {
-      $scope.sending = false;
-      $scope.loading = false;
-      $scope.user = {};
-      $scope.modal.title = "Bienvenido";
-      $scope.modal.messages = [{mess: "Bienvenido a Pase.fit"}];
-      $scope.open();
+      $ctrl.sending = false;
+      $ctrl.loading = false;
+      $ctrl.user = {};
+      $ctrl.modal.title = "Bienvenido";
+      $ctrl.modal.messages = [{mess: "Bienvenido a Pase.fit"}];
+      $ctrl.open();
       $timeout(function () {
         $state.go("app.access.login");
       }, 1200);
     } else {
       console.log("invalid form");
-      $scope.user = {};
+      $ctrl.user = {};
     }
   };
 
   var error = function (reason) {
-    $scope.sending = false;
+    $ctrl.sending = false;
     console.log("Error al registrar");
     console.log(reason);
-    $scope.loading = false;
-    $scope.user = {};
-    $scope.modal.title = "Error";
-    $scope.modal.messages = reason.data.errors;
-    $scope.open("modal-sm");
+    $ctrl.loading = false;
+    $ctrl.user = {};
+    $ctrl.modal.title = "Error";
+    $ctrl.modal.messages = reason.data.errors;
+    $ctrl.open("modal-sm");
   };
 
-  $scope.register = function () {
-    $scope.authError = null;
-    console.log($scope.user.tipo);
+  $ctrl.register = function () {
+    $ctrl.authError = null;
+    console.log($ctrl.user.tipo);
     console.log("Registrando usuario");
-//    if ($scope.tipoUsuario.send !== undefined) {
-    if ($scope.tipoUsuario.send !== undefined) {
-      if ($scope.user.email !== undefined && $scope.user.email !== " " &&
-              $scope.user.plainPassword.first !== undefined && $scope.user.plainPassword.first !== "" && $scope.user.plainPassword.first !== " " &&
-              $scope.user.plainPassword.second !== undefined && $scope.user.plainPassword.second !== "" && $scope.user.plainPassword.second !== " ") {
-        $scope.loading = true;
+//    if ($ctrl.tipoUsuario.send !== undefined) {
+    if ($ctrl.tipoUsuario.send !== undefined) {
+      if ($ctrl.user.email !== undefined && $ctrl.user.email !== " " &&
+              $ctrl.user.plainPassword.first !== undefined && $ctrl.user.plainPassword.first !== "" && $ctrl.user.plainPassword.first !== " " &&
+              $ctrl.user.plainPassword.second !== undefined && $ctrl.user.plainPassword.second !== "" && $ctrl.user.plainPassword.second !== " ") {
+        $ctrl.loading = true;
 
-        $scope.user.tipo = null;
-        $scope.sending = true;
+        $ctrl.user.tipo = null;
+        $ctrl.sending = true;
         var user = {
-          username: $scope.user.email,
+          username: $ctrl.user.email,
           plainPassword: {
-            first: $scope.user.plainPassword.first,
-            second: $scope.user.plainPassword.second
+            first: $ctrl.user.plainPassword.first,
+            second: $ctrl.user.plainPassword.second
           },
-          email: $scope.user.email,
-          roles: [$scope.tipoUsuario.send]
+          email: $ctrl.user.email,
+          roles: [$ctrl.tipoUsuario.send]
         };
         var formData = {
           fos_user_registration_form: user
@@ -80,38 +83,38 @@ function registerCtrl($scope, $http, $state, $mdDialog, $log, $window, $timeout,
         $http(config).then(success, error);
       } else {
         console.log("Faltan datos");
-        console.log($scope.user);
-        $scope.loading = false;
+        console.log($ctrl.user);
+        $ctrl.loading = false;
       }
     } else {
       console.log("Sin rol asignado");
     }
   };
 
-  $scope.tipoUsuario = {};
+  $ctrl.tipoUsuario = {};
 
-  $scope.tipoUsuario = JSON.parse(localStorage.getItem("pase.fit.storage-tipoUsuario"));
-  $scope.user = {tipo: $scope.tipoUsuario};
-  console.log($scope.tipoUsuario);
+  $ctrl.tipoUsuario = JSON.parse(localStorage.getItem("pase.fit.storage-tipoUsuario"));
+  $ctrl.user = {tipo: $ctrl.tipoUsuario};
+  console.log($ctrl.tipoUsuario);
 
-  $scope.elegirUsuario = function (number) {
-    $scope.tipoUsuario = $scope.tipos[number];
-    localStorage.setItem("pase.fit.storage-tipoUsuario", JSON.stringify($scope.tipoUsuario));
+  $ctrl.elegirUsuario = function (number) {
+    $ctrl.tipoUsuario = $ctrl.tipos[number];
+    localStorage.setItem("pase.fit.storage-tipoUsuario", JSON.stringify($ctrl.tipoUsuario));
     $state.go('app.access.register');
   };
 
-  $scope.open = function (ev) {
+  $ctrl.open = function (ev) {
     console.log("Abrir modal");
-    console.log($scope.modal);
+    console.log($ctrl.modal);
     var mes = "";
-    for (var i = 0; i < $scope.modal.messages.length; i++) {
-      mes += $scope.modal.messages[i].mess + "\n";
+    for (var i = 0; i < $ctrl.modal.messages.length; i++) {
+      mes += $ctrl.modal.messages[i].mess + "\n";
     }
     $mdDialog.show(
             $mdDialog.alert()
             .parent(angular.element(document.querySelector('#popupContainer')))
             .clickOutsideToClose(true)
-            .title($scope.modal.title)
+            .title($ctrl.modal.title)
             .textContent(mes)
             .ariaLabel('Alert')
             .ok('ok')
@@ -119,8 +122,8 @@ function registerCtrl($scope, $http, $state, $mdDialog, $log, $window, $timeout,
             );
   };
 
-  $scope.facebookSingin = function () {
-    $scope.sending = true;
+  $ctrl.facebookSingin = function () {
+    $ctrl.sending = true;
     console.log("Login facebook");
     $facebook.login().then(function success(response) {
       console.log("Exito");

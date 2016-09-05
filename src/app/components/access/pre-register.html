@@ -1,26 +1,30 @@
-<!--<md-content layout="column" layout-align="center center">-->
-<md-content layout="column">
-   <md-toolbar>
-
-   </md-toolbar>
-   <md-content  layout="row">
-      <div flex></div>
-      <md-whiteframe class="md-whiteframe-8dp" flex="35" layout="column" layout-align="center center">
-         <h3>
+<md-content flex layout="column" class="login-1" layout-padding>
+<div layout="row"  layout-padding>
+    <div flex hide-xs show-gt-sm></div>
+    <md-content flex-md="50" flex-gt-md="35" flex-sm="80" flex-xs="100" layout="column" layout-align="start" layout-padding>
+        <!--<md-content flex-md="50" flex-gt-md="35" flex-sm="80" flex-xs="100" layout="column" layout-padding>-->
+        <h3>
             <span>¿Que tipo de usuario eres?</span>
-         </h3>
-         <!--<div layout="row" flex layout-align="center center">-->
-         <div style='width: 100%'>
-            <md-grid-list md-cols="2" md-gutter="1em" md-row-height="150px">
-               <md-grid-tile  ng-repeat="tipo in tipos" style="background-image: url('app/img/img_SN.gif'); background-size: cover" ng-click="elegirUsuario($index)">
-                  <md-grid-tile-footer>
-                     <h3>{{tipo.rol}}</h3>
-                  </md-grid-tile-footer>
-               </md-grid-tile>
-
-            </md-grid-list>
-         </div>
-      </md-whiteframe>
-      <div flex></div>
-   </md-content>
+        </h3>
+        <!--<md-content flex layout="row" layout-padding>-->
+        <md-content layout="row" layout-padding>
+            <md-content flex layout="column" layout-padding>
+                <!--<md-grid-list md-cols="2" md-gutter="1em" md-row-height="150px">-->
+                <md-grid-list md-cols-gt-md="2" md-cols="2" md-cols-md="2" md-cols-xs="1" md-cols-sm="2"
+                              md-row-height-gt-md="1:1" md-row-height="4:3"
+                              md-gutter-gt-md="10px" md-gutter-md="10px" md-gutter="10px">
+                    <md-grid-tile  ng-repeat="tipo in $ctrl.tipos" 
+                                   style="background-image: url('app/img/img_SN.gif'); background-size: cover" 
+                                   ng-click="$ctrl.elegirUsuario($index)">
+                        <md-grid-tile-footer>
+                            <h3>{{tipo.rol}}</h3>
+                        </md-grid-tile-footer>
+                    </md-grid-tile>
+                </md-grid-list>
+            </md-content>
+            <!--</div>-->
+        </md-content>
+    </md-content>
+<div flex hide-xs show-gt-sm></div>
+</div>
 </md-content>

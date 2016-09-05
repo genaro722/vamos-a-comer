@@ -1,0 +1,6 @@
+<span ng-class="$ctrl.config.style">
+   <i class="fa fa-star" ng-class="$ctrl.config.styleIcon" ng-repeat="l in $ctrl.estrellaLlena" ng-hide="$ctrl.estrellaLlena.length===0"></i>
+   <i class="fa fa-star-half-full" ng-class="$ctrl.config.styleIcon" ng-repeat="m in $ctrl.estrellaMedia" ng-hide="$ctrl.estrellaMedia.length===0"></i>
+   <i class="fa fa-star-o" ng-class="$ctrl.config.styleIcon" ng-repeat="v in $ctrl.estrellaVacia" ng-hide="$ctrl.estrellaVacia.length===0"></i>
+   <small style="margin-left: 10px" ng-if='$ctrl.config.mostrarValor'>{{$ctrl.config.valor}}</small>
+</span>

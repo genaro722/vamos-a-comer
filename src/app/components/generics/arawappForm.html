@@ -1,0 +1,183 @@
+<md-content flex  ng-class="$ctrl.config.height">
+    <div flex layout="column">
+        <p ng-hide="$ctrl.list !== null && $ctrl.list !== undefined && $ctrl.list !== '' && $ctrl.list.length !== 0">
+            No ha ingresado ningun dato
+        </p>
+        <div layout="column" ng-hide="$ctrl.editing">
+            <ul>
+                <li ng-repeat="key in $ctrl.list track by $index" layout-align='center center'>
+                    <!--layout='row'-->
+                    <span ng-if="($ctrl.config.exclude[key] !== true)">
+                        <span translate="{{key}}" class="md-subhead">
+                        </span>
+                        <span ng-if="($ctrl.config.objectConfig[key].type === 'select')" ng-repeat='value in $ctrl.config.objectConfig[key].values| filter:{id:$ctrl.config.object[key]}'>
+                            : {{value[$ctrl.config.objectConfig[key].show]}}
+                        </span>
+                        <span ng-if="($ctrl.config.objectConfig[key].type !== 'select' && $ctrl.config.objectConfig[key].type !== 'radio')">
+                            : {{$ctrl.config.object[key]}}
+                        </span>
+                        <span ng-if="($ctrl.config.objectConfig[key].type === 'radio')" ng-repeat='value in $ctrl.config.objectConfig[key].values| filter:{id:$ctrl.config.object[key]}'>
+                            : {{value[$ctrl.config.objectConfig[key].show]}}
+                        </span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div ng-show="$ctrl.editing" layout="column" layout-padding>
+            <form name="form" layout="row" flex="100">
+                <div layout="column" flex="45">
+                        <md-input-container md-no-float
+                                            ng-repeat="key in $ctrl.left track by $index"
+                         ng-if="($ctrl.config.exclude[key] !== true)" >
+                            <label translate="{{key}}" no-float ng-if="($ctrl.config.objectConfig[key].type !== 'radio')">
+
+                            </label>
+                            <md-select  ng-if="($ctrl.config.objectConfig[key].type === 'select')"
+                                        ng-model="$ctrl.config.object[key]" 
+                                        ng-disabled="$ctrl.config.disabled"
+                                        ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                        aria-label="{{key}}"
+                                        ng-class="$ctrl.config.objectConfig[key].style">
+                                <md-option ng-repeat="value in $ctrl.config.objectConfig[key].values track by $index"
+                                           ng-value="value[$ctrl.config.objectConfig[key].model]"
+                                           >
+                                    {{value[$ctrl.config.objectConfig[key].show]}}
+                                </md-option>
+                            </md-select>
+                            <md-select  ng-if="($ctrl.config.objectConfig[key].type === 'select-multiple')"
+                                        ng-model="$ctrl.config.object[key]" 
+                                        ng-disabled="$ctrl.config.disabled"
+                                        ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                        aria-label="{{key}}"
+                                        ng-class="$ctrl.config.objectConfig[key].style"
+                                        multiple>
+                                <md-option ng-repeat="value in $ctrl.config.objectConfig[key].values track by $index"
+                                           ng-value="value[$ctrl.config.objectConfig[key].model]"
+                                           >
+                                    {{value[$ctrl.config.objectConfig[key].show]}}
+                                </md-option>
+                            </md-select>
+                            <input  ng-if="($ctrl.config.objectConfig[key].datetime !== true 
+                                        && $ctrl.config.objectConfig[key].type !== 'select'
+                                && $ctrl.config.objectConfig[key].type !== 'select-multiple'
+                                        && $ctrl.config.objectConfig[key].type !== 'radio')"
+                                    ng-model="$ctrl.config.object[key]"
+                                    type="{{$ctrl.config.objectConfig[key].type}}"
+                                    ng-disabled="$ctrl.config.disabled"
+                                    ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                    required="required"
+                                    name="{{key}}">
+                            <input ng-if="($ctrl.config.objectConfig[key].datetime === true)"
+                                   ng-model="$ctrl.config.object[key]"
+                                   mdc-datetime-picker="" 
+                                   date="$ctrl.config.objectConfig[key].date" 
+                                   time="$ctrl.config.objectConfig[key].time"
+                                   min-date="$ctrl.config.objectConfig[key].min"
+                                   max-date="$ctrl.config.objectConfig[key].max"
+                                   type="text"
+                                   ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                   required="required"
+                                   name="{{key}}">
+
+
+                            <md-radio-group ng-model="$ctrl.config.object[key]"  
+                                            ng-if="($ctrl.config.objectConfig[key].type === 'radio')"
+                                            ng-disabled="$ctrl.config.disabled"
+                                            required="required">
+                                <md-radio-button value="verdadero" class="md-primary inline-block" 
+                                                 ng-repeat="value in $ctrl.config.objectConfig[key].values track by $index"
+                                                 ng-value="value[$ctrl.config.objectConfig[key].model]">
+                                    {{value[$ctrl.config.objectConfig[key].show]}}
+                                </md-radio-button>
+
+                            </md-radio-group>
+                            <div ng-messages="form.{{key}}.$error">
+                                <div ng-message="required">Introduzca el(la) <span translate="{{key}}"></span></div>
+                            </div>
+                        </md-input-container>                      
+                    <!--</div>-->
+                </div>
+                <div flex="5">
+                </div>
+                <div layout="column" flex="45">
+<!--                    <div ng-repeat="key in $ctrl.right track by $index"
+                         ng-if="($ctrl.config.exclude[key] !== true)" 
+                         flex
+                         layout="row">-->
+                        <md-input-container 
+                                            ng-repeat="key in $ctrl.right track by $index"
+                         ng-if="($ctrl.config.exclude[key] !== true)" >
+                            <label translate="{{key}}" ng-if="($ctrl.config.objectConfig[key].type !== 'radio')"></label>
+                            <md-select  ng-if="($ctrl.config.objectConfig[key].type === 'select')"
+                                        ng-model="$ctrl.config.object[key]" 
+                                        ng-disabled="$ctrl.config.disabled"
+                                        ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                        aria-label="{{key}}"
+                                        ng-class="$ctrl.config.objectConfig[key].style"
+                                        >
+                                <md-option ng-repeat="value in $ctrl.config.objectConfig[key].values track by $index"
+                                           ng-value="value[$ctrl.config.objectConfig[key].model]"
+                                           >
+                                    {{value[$ctrl.config.objectConfig[key].show]}}
+                                </md-option>
+                            </md-select>
+                            <md-select  ng-if="($ctrl.config.objectConfig[key].type === 'select-multiple')"
+                                        ng-model="$ctrl.config.object[key]" 
+                                        ng-disabled="$ctrl.config.disabled"
+                                        ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                        aria-label="{{key}}"
+                                        ng-class="$ctrl.config.objectConfig[key].style"
+                                        multiple>
+                                <md-option ng-repeat="value in $ctrl.config.objectConfig[key].values track by $index"
+                                           ng-value="value[$ctrl.config.objectConfig[key].model]"
+                                           >
+                                    {{value[$ctrl.config.objectConfig[key].show]}}
+                                </md-option>
+                            </md-select>
+                            <input  ng-if="($ctrl.config.objectConfig[key].datetime !== true &&
+                                        $ctrl.config.objectConfig[key].type !== 'select'
+                                        && $ctrl.config.objectConfig[key].type !== 'radio'
+                                        && $ctrl.config.objectConfig[key].type !== 'select-multiple')"
+                                    ng-model="$ctrl.config.object[key]" 
+                                    type="{{$ctrl.config.objectConfig[key].type}}"
+                                    ng-disabled="$ctrl.config.disabled"
+                                    ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                    required="required">
+                            <input ng-if="($ctrl.config.objectConfig[key].datetime === true)"
+                                   ng-model="$ctrl.config.object[key]"
+                                   ng-disabled="$ctrl.config.disabled"
+                                   mdc-datetime-picker="" 
+                                   date="$ctrl.config.objectConfig[key].date" 
+                                   time="$ctrl.config.objectConfig[key].time" 
+                                   min-date="$ctrl.config.objectConfig[key].min"
+                                   max-date="$ctrl.config.objectConfig[key].max"
+                                   type="text"
+                                   ng-change="$ctrl.config.objectConfig[key].change($ctrl.config.object[key])"
+                                   required="required">
+                            <md-radio-group ng-model="$ctrl.config.object[key]"  
+                                            ng-if="($ctrl.config.objectConfig[key].type === 'radio')"
+                                            ng-disabled="$ctrl.config.disabled"
+                                            required="required">
+                                <md-radio-button value="verdadero" class="md-primary inline-block" 
+                                                 ng-repeat="value in $ctrl.config.objectConfig[key].values track by $index"
+                                                 ng-value="value[$ctrl.config.objectConfig[key].model]">
+                                    {{value[$ctrl.config.objectConfig[key].show]}}
+                                </md-radio-button>
+
+                            </md-radio-group>
+                            <div ng-messages="form.{{key}}.$error">
+                                <div ng-message="required">Introduzca el(la) <span translate="{{key}}"></span></div>
+                            </div>
+                        </md-input-container>                      
+                    <!--</div>-->
+                </div>
+            </form>
+        </div>
+        <div layout="row" ng-show="$ctrl.editing">
+            <md-button ng-repeat="action in $ctrl.config.actions" ng-class="action.class" ng-click="action.action()">
+                <md-icon style="color: {{action.iconColor}};">{{action.icon}}</md-icon>
+                {{action.name}}
+            </md-button>
+        </div>
+    </div>
+</md-content>

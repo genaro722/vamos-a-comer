@@ -6,10 +6,12 @@ angular.module('app')
 
 function App($rootScope, $scope, $state, jwtHelper, Restangular) {
   $scope.title="Pase.Fit";
+  console.log("app ctrl");
   function comprobarSesion(toState) {
     console.log("Comprobando sesión");
     if (toState === "app.access.login" ||
             toState === "app.access.register" ||
+            toState === "app.access.pre-register" ||
             toState === "app.access.registerForm" ||
             toState === 'app.access.forgotPwd' ||
             toState === "app.access.resetPwd") {
@@ -33,9 +35,9 @@ function App($rootScope, $scope, $state, jwtHelper, Restangular) {
     }
   }
 
-  $rootScope.$on('$stateChangeSuccess', function (e, toState, toParams, fromState, fromParams) {
-    comprobarSesion(toState.name);
-  });
+//  $rootScope.$on('$stateChangeSuccess', function (e, toState, toParams, fromState, fromParams) {
+//    comprobarSesion(toState.name);
+//  });
 
   Restangular.configuration.getIdFromElem = function (elem) {
     var id = "";

@@ -1,0 +1,108 @@
+<md-sidenav
+    class="md-sidenav-left"
+    md-component-id="sidesearch"
+    md-is-locked-open="$mdMedia('gt-md')"
+    md-whiteframe="4" style="height: 100%;">
+    <md-content
+        layout="column" 
+        layout-align="start"
+        layout-padding="" 
+        class="pf-inputs">
+        <!--<span class="font-pf-break white-text" style="margin-top: 60px;margin-bottom: 20px; padding-bottom: 5px; border-bottom: 2px solid  rgba(255, 255, 255, 0.43);">-->
+        <span class="font-pf-break white-text">
+            <!--Búsqueda avanzada-->
+            {{$ctrl.config.title}}
+        </span>
+        <!--<md-divider></md-divider>-->
+        <div layout="row" layout-padding layout-align="center center">
+            <md-button 
+                ng-repeat="mode in $ctrl.config.mode"
+                ng-class="mode.style"
+                ng-click="mode.action()">
+                {{mode.name}}
+            </md-button>
+        </div>
+        <md-content layout="column" flex="40" style="max-height: 250px;">
+            <!--            <ul flex="100" style="padding-left: 0px;">
+                            <li flex="100" class="md-3-line" 
+                                layout="column" 
+                                ng-repeat="category in $ctrl.config.categories">
+                            <md-button style="margin: 0px;" flex="100" ng-class="category.buttonStyle"
+                                       ng-click="category.toggleCategory()">
+                                <span>
+                                    {{category.name}}
+                                    <span flex></span>
+                                    <md-icon ng-show="category.showCategory">keyboard_arrow_up</md-icon>
+                                    <md-icon ng-hide="category.showCategory">keyboard_arrow_down</md-icon>
+                                </span>
+                            </md-button>                    
+                            <div ng-show="category.showCategory" layout="column">
+                                <md-list ng-if="category.hasChildren" ng-repeat="sub in category.children">
+                                    <md-subheader class="md-no-sticky">{{sub.name}}</md-subheader>
+                                    <md-list-item ng-repeat="item in sub.items">
+                                        <md-checkbox class="md-secondary" ng-model="item.model" aria-label="{{item.name}}"></md-checkbox>
+                                        {{item.name}}
+                                    </md-list-item>
+                                </md-list>
+                                <md-list ng-if="(!category.hasChildren)">
+                                    <md-list-item  ng-repeat="item in category.items">
+                                        <md-checkbox class="md-secondary" ng-model="item.model" aria-label="{{item.name}}"></md-checkbox>
+                                        {{item.name}}
+                                    </md-list-item>
+                                </md-list>
+                            </div>
+                            </li>
+                        </ul>-->
+            <md-list>
+                <div ng-repeat="category in $ctrl.config.categories">
+                    <md-list-item flex="100"
+                              ng-class="category.buttonStyle"
+                              ng-click="category.toggleCategory()">
+                    <!--<span>-->
+                        {{category.name}}
+                    <span flex></span>
+                    <md-icon ng-show="category.showCategory">keyboard_arrow_up</md-icon>
+                    <md-icon ng-hide="category.showCategory">keyboard_arrow_down</md-icon>
+                    <!--</span>-->                                    
+                </md-list-item>
+                <div ng-show="category.showCategory" layout="column">
+                        <md-list ng-if="category.hasChildren" ng-repeat="sub in category.children">
+                            <md-subheader class="md-no-sticky">{{sub.name}}</md-subheader>
+                            <md-list-item ng-repeat="item in sub.items">
+                                <md-checkbox class="md-secondary" 
+                                             ng-model="item.model"
+                                             aria-label="{{item.name}}"
+                                             ng-show="category.showCategory"></md-checkbox>
+                                {{item.name}}
+                            </md-list-item>
+                        </md-list>
+                        <md-list ng-if="(!category.hasChildren)" ng-show="category.showCategory">
+                            <md-list-item  ng-repeat="item in category.items">
+                                <md-checkbox class="md-secondary" 
+                                             ng-model="item.model" 
+                                             aria-label="{{item.name}}"
+                                             ng-show="category.showCategory"></md-checkbox>
+                                {{item.name}}
+                            </md-list-item>
+                        </md-list>
+                    </div>
+                </div>
+            </md-list>
+        </md-content>
+        <div>
+            <ul flex="100">
+                <li flex="100" flex="100" layout="column" ng-repeat="actions in $ctrl.config.actions">
+                    <div layout-align="row">
+                        <md-button ng-repeat="action in actions"
+                                   ng-click="action.action()" 
+                                   ng-show="action.visible">
+                            <md-tooltip open="{{action.tooltip.open}}">{{action.tooltip.name}}</md-tooltip>
+                            <md-icon ng-if="action.icon">{{action.icon}}</md-icon>
+                            {{action.name}}
+                        </md-button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </md-content>
+</md-sidenav>
