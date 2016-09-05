@@ -16,6 +16,10 @@ function sideSearchStudioCtrl() {
   var $ctrl = this;
   
   $ctrl.config = {
+    title: {name: "busqueda avanzada",
+      style: [],
+      divider: true
+    },
     mode: [
       {
         name: "boton 1",
