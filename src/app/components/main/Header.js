@@ -10,14 +10,14 @@ angular
   });
 
 /** @ngInject */
-function Header(todoService) {
-  this.todoService = todoService;
+function Header() {
+//  this.todoService = todoService;
 }
 
-Header.prototype = {
-  handleSave: function (text) {
-    if (text.length !== 0) {
-      this.todos = this.todoService.addTodo(text, this.todos);
-    }
-  }
-};
+//Header.prototype = {
+//  handleSave: function (text) {
+//    if (text.length !== 0) {
+//      this.todos = this.todoService.addTodo(text, this.todos);
+//    }
+//  }
+//};
