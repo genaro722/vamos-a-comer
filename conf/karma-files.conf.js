@@ -10,7 +10,7 @@ module.exports = function listFiles() {
   const patterns = wiredep(wiredepOptions).js.concat([
     'node_modules/babel-polyfill/browser.js',
     `!${conf.path.tmp('**/*.spec.js')}`,
-    conf.path.tmp('app/todos/todos.js'),
+//    conf.path.tmp('app/todos/todos.js'),
     conf.path.tmp('index.js'),
     conf.path.tmp('app/constants/*.js'),
     conf.path.tmp('app/containers/*.js'),
