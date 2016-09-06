@@ -7,14 +7,14 @@ angular
 
 function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia) {
   console.log("mainCtrl");
-  
+  var $ctrl = this;
   $http.get("app/data/menu.json").then(function success(response) {
-    $scope.menu = response.data;
+    $ctrl.menu = response.data;
   }, function error(response) {
     console.log("Error al crear el menu");
   });
   
-  $scope.profile = function () {
+  $ctrl.profile = function () {
     console.log("perfil");
     var pro = (JSON.parse(localStorage.getItem("pase.fit.storage-profiles_iri")))[0];
     if (pro.client_url !== undefined && pro.client_url !== null) {
@@ -24,12 +24,36 @@ function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia)
     }
   };
 
-  $scope.logout = function () {
+  $ctrl.logout = function () {
     localStorage.clear();
     $state.go("app.access.login");
   };
-  $scope.toggleSideMenu = function () {
+  $ctrl.toggleSideMenu = function () {
     $mdSidenav('left')
             .toggle();
   };
+  $ctrl.toggleSideMenu = function () {
+    $mdSidenav('left')
+            .toggle();
+  };
+  $ctrl.toogleProfileMenu = function () {
+    $mdSidenav('profile-menu')
+            .toggle();
+  };
+  
+  $ctrl.profileMenu = [
+    {
+      name: "opcion 1",
+      icon: "account_circle",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "opcion 2",
+      icon: "",
+    action: function(){
+        console.log("accion de la opcion 2");
+    }}
+  ];
 }

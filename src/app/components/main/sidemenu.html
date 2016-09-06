@@ -1,15 +1,16 @@
- <md-sidenav
-        class="md-sidenav-left"
-        md-component-id="left"
+<!--md-is-locked-open="$mdMedia('gt-md')"--> 
+<md-sidenav
+        class="md-sidenav-right"
+        md-component-id="profile-menu"
         md-disable-backdrop
-        md-is-locked-open="$mdMedia('gt-md')"
+        
         md-whiteframe="4">
       <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Sidenav Left sin </h1>
+        <h1 class="md-toolbar-tools">Menu de perfil</h1>
       </md-toolbar>
       <md-content layout-padding>
          <md-list class="md-dense">
-      <md-list-item ng-repeat="item in menu">
+      <md-list-item ng-repeat="item in $ctrl.profileMenu">
         <div class="md-list-item-text">
           <h5>{{item.nombre}}</h5>
         </div>
