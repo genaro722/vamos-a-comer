@@ -12,8 +12,8 @@ function customFormCtrl($scope) {
   var $ctrl = this;
   $ctrl.list = [];
   $ctrl.form = [];
-  $ctrl.verdadero=true;
-  $ctrl.falso=false;
+  $ctrl.verdadero = true;
+  $ctrl.falso = false;
   if ($ctrl.config.height === undefined) {
     $ctrl.config.height = {'max-height': '350px'};
   }
@@ -35,7 +35,8 @@ function customFormCtrl($scope) {
     $ctrl.list = [];
     $ctrl.form = [];
     for (var key in newValue) {
-      if (key[0] === '@' || typeof (newValue[key]) === 'array' || typeof (newValue[key]) === 'function') {
+//      if (key[0] === '@' || typeof (newValue[key]) === 'array' || typeof (newValue[key]) === 'function') {
+      if (key[0] === '@' || typeof (newValue[key]) === 'function') {
 
       } else if (typeof (newValue[key]) === 'object') {
         if (newValue[key] === null) {
@@ -53,19 +54,28 @@ function customFormCtrl($scope) {
     }
 
     for (var k in $ctrl.config.exclude) {
-      for (var i = 0; i < $ctrl.list.length; i++) {
-        if (k === $ctrl.list[i]) {
-          $ctrl.list.splice(i, 1);
-          break;
+      if (k === undefined) {
+
+      } else {
+        for (var i = 0; i < $ctrl.list.length; i++) {
+          if (k === $ctrl.list[i]) {
+            $ctrl.list.splice(i, 1);
+            break;
+          }
         }
       }
+
     }
 //    para excluir del formulario
     for (var k2 in $ctrl.config.exclude) {
-      for (var i2 = 0; i2 < $ctrl.form.length; i2++) {
-        if (k2 === $ctrl.form[i2]) {
-          $ctrl.form.splice(i2, 1);
-          break;
+      if (k2 === undefined) {
+
+      } else {
+        for (var i2 = 0; i2 < $ctrl.form.length; i2++) {
+          if (k2 === $ctrl.form[i2]) {
+            $ctrl.form.splice(i2, 1);
+            break;
+          }
         }
       }
     }

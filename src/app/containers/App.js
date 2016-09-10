@@ -41,10 +41,15 @@ function App($rootScope, $scope, $state, jwtHelper, Restangular) {
 
   Restangular.configuration.getIdFromElem = function (elem) {
     var id = "";
-    if (elem["@id"] !== undefined) {
-      id = elem["@id"].split("/")[3];
-    } else {
+//    if (elem["@id"] !== undefined) {
+//      id = elem["@id"].split("/")[3];
+//    } else {
+//      id = elem.id;
+//    }
+    if (elem["@id"] === undefined) {
       id = elem.id;
+    } else {
+      id = elem["@id"].split("/")[3];
     }
     return id;
   };
