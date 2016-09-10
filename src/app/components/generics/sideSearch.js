@@ -2,7 +2,7 @@ angular
         .module('app')
 //        .component('sideSearchStudio', {
         .component('sideSearch', {
-          templateUrl: 'app/cliente/search/sideSearch.html',
+          templateUrl: 'app/components/generics/sideSearch.html',
           controller: sideSearchStudioCtrl,
           bindings: {
             resultado: "=",

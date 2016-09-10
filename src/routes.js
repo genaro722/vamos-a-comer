@@ -60,5 +60,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             url: 'cliente',
             template: '<main-search flex></main-search>'
           })
+          .state('app.inside.restaurante', {
+            url: 'restaurante',
+            template: '<dashboard-restaurante></dashboard-restaurante>'
+          })
           ;
 }
