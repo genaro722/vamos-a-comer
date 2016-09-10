@@ -1,0 +1,21 @@
+<!--md-is-locked-open="$mdMedia('gt-md')"--> 
+<md-sidenav
+    class="md-sidenav-right md-whiteframe-4dp"
+    md-component-id="profile-menu"
+    md-whiteframe="4">
+    <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Menu de perfil</h1>
+    </md-toolbar>
+    <md-content layout-padding layout-align="center center">
+        <md-list class="md-dense">
+            <md-list-item layout="row" layout-align="center center" ng-repeat="item in $ctrl.menu" >
+                <md-button ng-click="item.action()">
+                    <!--<md-icon ng-if="item.icon">{{item.icon}}</md-icon>-->
+                    <md-icon>{{item.icon}}</md-icon>
+                    {{item.name}}        
+                </md-button>
+                <md-divider ng-if="!$last"></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
