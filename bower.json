@@ -4,7 +4,6 @@
   "dependencies": {
     "angular": "^1.5.0",
     "angular-ui-router": "^0.3.1",
-    "angular-material": "*",
     "angular-animate": "*",
     "angular-aria": "*",
     "angular-jwt": "0.0.9",
@@ -13,7 +12,8 @@
     "jquery": "*",
     "components-font-awesome": "*",
     "oclazyload": "*",
-    "angular-google-maps": "2.3.2"
+    "angular-google-maps": "2.3.2",
+    "angular-material": "1.1.1"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0"
