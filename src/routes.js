@@ -58,7 +58,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 //          })
           .state('app.inside.cliente', {
             url: 'cliente',
-            template: '<main-search></main-search>'
+            template: '<main-search flex></main-search>'
           })
           ;
 }

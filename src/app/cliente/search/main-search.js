@@ -5,6 +5,7 @@ angular.module('app')
 function searchCtrl($scope) {
   var $ctrl = this;
   $ctrl.map = true;
+  $ctrl.showSideSearch = true;
   $ctrl.idmarkercenter = 0;
   $ctrl.resultado = [];
   $ctrl.locations = [];
@@ -24,6 +25,7 @@ function searchCtrl($scope) {
       $ctrl.search = "";
     }
   };
+  
 
   $scope.$watch('$ctrl.resultado', function(newValue, oldValue) {
      for (var i = 0; i < newValue.length; i++) {
@@ -35,7 +37,10 @@ function searchCtrl($scope) {
 //      ubicaciones.push(marker);
     }
     $ctrl.locations = $ctrl.resultado;
-   
 });
 
+  $ctrl.toogleSideSearch = function(){
+    console.log("$ctrl.toogleSideSearch");
+    $ctrl.showSideSearch = !$ctrl.showSideSearch;
+  };
 }

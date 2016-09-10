@@ -1,6 +1,6 @@
 angular.module('app')
         .component('stars', {
-          templateUrl: 'app/components/stars.html',
+          templateUrl: 'app/components/generics/stars.html',
           controller: starsCtrl,
           bindings: {
             config: '='

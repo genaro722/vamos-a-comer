@@ -1,23 +1,24 @@
 <md-content layout="row" flex>
    <side-search resultado="$ctrl.resultado" 
-                       view="$ctrl.map"
-                       idmarkercenter="$ctrl.idmarkercenter">
+                view="$ctrl.map"
+                idmarkercenter="$ctrl.idmarkercenter"
+                ng-show="$ctrl.showSideSearch">
    </side-search>
    <md-content flex layout="column" style="min-height: 600px">
-      <div class="maps-600" ng-show='$ctrl.map'>
-         <location config="$ctrl.locationConfig" markers="$ctrl.locations" idmarkercenter="$ctrl.idmarkercenter" clickeable="false"></location>
-      </div>
-<!--      <md-content flex layout="column" ng-hide='$ctrl.map' layout-padding>
-         <md-grid-list
-            md-cols-gt-md="3" md-cols="3" md-cols-md="3" md-cols-xs="1" md-cols-sm="2"
-            md-row-height-gt-md="1:1" md-row-height="4:3"
-            md-gutter-gt-md="40px" md-gutter-md="40px" md-gutter="10px">
-            <md-grid-tile
-               ng-repeat="studio in $ctrl.resultado" >
-               <studio-item-component studio="studio"></studio-item-component>
-            </md-grid-tile>
-         </md-grid-list>
-      </md-content>-->
-   </md-content> 
+      <md-tabs flex md-dynamic-height md-border-bottom md-selected="$ctrl.tab" md-stretch-tabs="always">
+         <md-tab label="mapa" >
+            <location config="$ctrl.locationConfig" markers="$ctrl.locations" idmarkercenter="$ctrl.idmarkercenter" clickeable="false"></location>
+         </md-tab>
+         <md-tab label="lista" layout="row">
+            <md-content flex>
+               <list-rest-food>
+               </list-rest-food>   
+            </md-content>  
+         </md-tab>
+         <md-tab label="orden" md-on-select="$ctrl.toogleSideSearch()" md-on-deselect="$ctrl.toogleSideSearch()">
+            <order></order>
+         </md-tab>
+      </md-tabs>
+   </md-content>
 </md-content>
 

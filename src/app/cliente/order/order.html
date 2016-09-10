@@ -1,0 +1,69 @@
+<md-content flex layout="row">
+   <md-content flex style="max-height: 600px;">
+      <!--<md-list ng-if="$ctrl.showList">-->
+      <md-list>
+         <md-list-item  ng-repeat="result in $ctrl.results">
+            <md-card>
+               <!--<img src="{{result.image}}" alt="comida" class="md-card-image" style="max-width: 220px;"/>-->
+               <md-card-title>
+                  <md-card-title-text>
+                     <span class="md-headline">{{result.name}}</span>
+                      <stars config="$ctrl.configStars2"></stars>
+                     <!--<span class="md-subhead">{{result.price}}</span>-->
+                  </md-card-title-text>
+               </md-card-title>
+               <md-card-content layout-padding layout="row">
+                  <img src="{{result.image}}" alt="comida" class="md-media-xl"/>
+                  <div layout="column">
+                     <span>{{result.description}}</span>
+                     <span>{{result.price}}</span>
+                     <div layout="row">
+
+                        <md-chips ng-model="result.menus" name="" readonly="true">
+                           <md-chip-template>
+                              <strong>{{$chip.menuCategory.name}}</strong>
+                           </md-chip-template>
+                        </md-chips>
+
+                        <md-card-actions layout="column" layout-align="start center">
+                           <md-button class="md-icon-button" ng-click="$ctrl.excludeFromOrder($index)">
+                              <md-icon>remove_shopping_cart</md-icon>
+                           </md-button >
+                           <md-button class="md-icon-button" ng-click="$ctrl.viewRestaurant(result.restaurant)">
+                              <md-icon>restaurant</md-icon>
+                           </md-button>
+                        </md-card-actions>
+                     </div>
+                  </div>
+               </md-card-content>
+            </md-card>
+         </md-list-item>
+      </md-list>
+   </md-content>
+   <md-content flex="35">
+      <md-card>
+         <!--            <img src="{{$ctrl.restaurant.image}}" alt="comida" class="md-card-image" style="max-width: 350px;"/>-->
+         <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" ng-click="$ctrl.closeRestaurant()">
+               <md-icon>cancel</md-icon>
+            </md-button>
+
+         </md-card-actions>            
+         <img src="{{$ctrl.restaurant.image}}" alt="comida" class="md-card-image"/>
+         <md-card-title>
+            <md-card-title-text layout-padding>
+               <span class="md-headline">{{$ctrl.restaurant.name}}</span>
+               <!--<span class="md-subhead">{{result.price}}</span>-->
+            </md-card-title-text>
+         </md-card-title>
+         <md-card-content layout-padding layout="column">
+            <span style="font-size: 16pt;">{{$ctrl.restaurant.about}}</span>
+            <span style="font-size: 12pt;">{{$ctrl.restaurant.address}}</span>
+            <span style="font-size: 12pt;">{{$ctrl.restaurant.cityName}} - {{$ctrl.restaurant.stateName}}</span>
+         </md-card-content>
+         <md-card-actions layout="row" layout-align="end center">
+            <stars config="$ctrl.configStars"></stars>
+         </md-card-actions>
+      </md-card>
+   </md-content>
+</md-content>
