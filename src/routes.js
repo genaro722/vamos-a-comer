@@ -46,11 +46,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             template: '<forgot-pwd-component></user-register-component>'
           })
           .state('app.inside', {
-            url: 'main',
+//            url: 'main',
+            abstract: true,
             template: '<main-component></main-component>'
           })
-          .state('app.inside.search', {
-            url: '/search',
+//          .state('app.inside.search', {
+//            url: 'search',
+//            template: '<main-search></main-search>'
+//          })
+          .state('app.inside.cliente', {
+            url: 'cliente',
             template: '<main-search></main-search>'
           })
           ;

@@ -1,5 +1,5 @@
 angular.module('app')
-        .component('mainSearch', {templateUrl: 'app/components/search/main-search.html',
+        .component('mainSearch', {templateUrl: 'app/cliente/search/main-search.html',
   controller: searchCtrl});
 
 function searchCtrl($scope) {
