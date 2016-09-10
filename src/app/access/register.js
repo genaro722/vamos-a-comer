@@ -1,7 +1,7 @@
 angular.module('app')
-        .component('regMainComponent', {templateUrl: 'app/components/access/register.html', controller: registerCtrl})
+        .component('regMainComponent', {templateUrl: 'app/access/register.html', controller: registerCtrl})
 //        .component('typeRegisterComponent', {templateUrl: 'app/components/access/pre-register.html', controller: registerCtrl});
-        .component('typeRegister', {templateUrl: 'app/components/access/pre-register.html', controller: registerCtrl});
+        .component('typeRegister', {templateUrl: 'app/access/pre-register.html', controller: registerCtrl});
 
 function registerCtrl($scope, $http, $state, $mdDialog, $timeout, $facebook, baseUrl) {
   var $ctrl = this;

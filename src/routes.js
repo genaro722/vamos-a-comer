@@ -5,7 +5,8 @@ angular
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 //  $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/access/login');
+//  $urlRouterProvider.otherwise('/access/login');
+  $urlRouterProvider.otherwise('/login');
 
   $stateProvider
           .state('app', {
@@ -13,36 +14,37 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             template: '<app></app>'
           })
           .state('app.access', {
-            url: 'access',
+//            url: 'access',
+            abstract: true,
             template: '<access></access>'
           })
           .state('app.access.login', {
-            url: '/login',
+            url: 'login',
 //            template: '<login-component></login-component>'
             template: '<login></login>'
 //            component: 'login'
           })
           .state('app.access.login1', {
-            url: '/login1',
+            url: 'login1',
 //            template: '<login-component></login-component>'
             template: '<login1></login1>'
 //            component: 'login'
           })
           .state('app.access.register', {
-            url: '/register',
+            url: 'register',
             template: '<reg-main-component></reg-main-component>'
           })
           .state('app.access.pre-register', {
-            url: '/pre-register',
+            url: 'pre-register',
 //            template: '<type-register-component></type-register-component>'
             template: '<type-register></type-register>'
           })
           .state('app.access.resetPwd', {
-            url: '/resetPwd',
+            url: 'resetPwd',
             template: '<reset-pwd-component></user-register-component>'
           })
           .state('app.access.forgotPwd', {
-            url: '/forgotPwd',
+            url: 'forgotPwd',
             template: '<forgot-pwd-component></user-register-component>'
           })
           .state('app.inside', {

@@ -1,6 +1,6 @@
 angular.module('app')
-        .component('forgotPwdComponent', {templateUrl: 'app/containers/access/forgotPwd.html', controller: forgotPwdCtrl})
-        .component('resetPwdComponent', {templateUrl: 'app/containers/access/resetPwd.html', controller: forgotPwdCtrl});
+        .component('forgotPwdComponent', {templateUrl: 'app/access/forgotPwd.html', controller: forgotPwdCtrl})
+        .component('resetPwdComponent', {templateUrl: 'app/access/resetPwd.html', controller: forgotPwdCtrl});
 
 function forgotPwdCtrl($scope, $http, $window, baseUrl) {
   console.log("resetPass");

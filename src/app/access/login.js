@@ -1,6 +1,6 @@
 //angular.module('app').component('loginComponent',
 angular.module('app').component('login',
-{templateUrl: 'app/components/access/login.html',
+{templateUrl: 'app/access/login.html',
   controller: loginCtrl});
 
 function loginCtrl($scope, $http, $state, $window, jwtHelper, $facebook, baseUrl, $mdDialog) {
