@@ -13,6 +13,27 @@ function listRestFoodCtrl($scope) {
   $ctrl.seeRestaurant = false;
   $ctrl.showList = false;
   $ctrl.filas = [];
+  
+  $ctrl.showIngredients = false;
+  $ctrl.flexOrderList = 35;
+  $ctrl.extras = [
+    {name: "Salsa de tomate", include: true},
+    {name: "Papas fritas", include: false}
+  ];
+  $ctrl.ingredients = [
+    {name: "Tomate", include: false},
+    {name: "Pimenton", include: true},
+    {name: "Cebolla", include: false}
+  ];
+  
+  $ctrl.toogleIngredients = function(){
+    $ctrl.showIngredients = !$ctrl.showIngredients;
+    if ($ctrl.showIngredients === true) {
+      $ctrl.flexOrderList = 60;
+    }else{
+       $ctrl.flexOrderList = 35;
+    }
+  };
   //Este sera un binding
   
   $ctrl.results = [

@@ -201,9 +201,6 @@ function listRestFoodCtrl($scope) {
     if (array.length > 0) {
       var filas = [];
       var fila = [];
-      var numFilas = array.length / numItemsFila;
-      console.log("numFilas");
-      console.log(numFilas);
       var contNumItemF = 1;
       for (var i = 0; i < array.length; i++) {
         if (i === (array.length - 1)) {
@@ -213,26 +210,21 @@ function listRestFoodCtrl($scope) {
         } else if (contNumItemF < numItemsFila) {
           fila.push(array[i]);
           contNumItemF++;
-          console.log("agregado elemento " + contNumItemF);
         } else {
           fila.push(array[i]);
           filas.push(fila);
           fila = [];
-          contNumItemF = 0;
+          contNumItemF = 1;
         }
       }
-
-//      if (filas.length > 0) {
-//        array = filas;
-//      }
     }
     console.log("Array agrupado");
-    console.log(array);
+    console.log(filas);
     return filas;
   };
 
 //  $ctrl.results = agrupar($ctrl.results, 4);
-  $ctrl.filas = agrupar($ctrl.results, 4);
+  $ctrl.filas = agrupar($ctrl.results, 2);
 
 //  $scope.$watch(function () {
 //            return $mdMedia('xs') || $mdMedia('sm');
@@ -243,8 +235,8 @@ function listRestFoodCtrl($scope) {
   $ctrl.viewRestaurant = function (restaurant) {
     $ctrl.restaurant = restaurant;
     $ctrl.configStars.valor = $ctrl.restaurant.calificationTotal;
-//    $ctrl.results = agrupar($ctrl.results, 2);
-    $ctrl.filas = agrupar($ctrl.results, 3);
+
+//    $ctrl.filas = agrupar($ctrl.results, 2);
     $ctrl.seeRestaurant = true;
   };
   
