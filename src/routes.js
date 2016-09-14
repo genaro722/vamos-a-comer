@@ -52,10 +52,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             abstract: true,
             template: '<main-component></main-component>'
           })
-//          .state('app.inside.search', {
-//            url: 'search',
-//            template: '<main-search></main-search>'
-//          })
           .state('app.inside.cliente', {
             url: 'cliente',
             template: '<main-search flex></main-search>'

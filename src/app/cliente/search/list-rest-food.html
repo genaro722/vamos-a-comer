@@ -1,9 +1,7 @@
 <md-content flex layout="row">
    <md-content flex style="max-height: 600px;">
-      <!--<md-list ng-if="$ctrl.showList">-->
-      <md-list ng-show="$ctrl.seeRestaurant">
-         <md-list-item  ng-repeat="result in $ctrl.results">
-            <md-card>
+       <div ng-repeat="fila in $ctrl.filas" layout="row" layout-align="center center">
+            <md-card ng-repeat="result in fila">
                <!--<img src="{{result.image}}" alt="comida" class="md-card-image" style="max-width: 220px;"/>-->
                <md-card-title>
                   <md-card-title-text>
@@ -40,10 +38,9 @@
                   </div>
                </md-card-content>
             </md-card>
-         </md-list-item>
-      </md-list>
+           </div>
 
-      <div ng-hide="$ctrl.seeRestaurant" ng-repeat="fila in $ctrl.filas" layout="row" layout-align="center center">
+<!--      <div ng-hide="$ctrl.seeRestaurant" ng-repeat="fila in $ctrl.filas" layout="row" layout-align="center center">
          <md-card ng-repeat="result in fila" style="max-height: 440px;">
             <img src="{{result.image}}" alt="comida" class="md-card-image" style="max-width: 220px;"/>
             <md-card-title>
@@ -55,7 +52,7 @@
             <md-card-content layout-padding>
                {{result.description}}
                <div layout="row">
-                  <!--<md-chips >-->
+                  <md-chips >
                   <md-chips ng-model="result.menus" name="" readonly="true">
                      <md-chip-template>
                         <strong>{{$chip.menuCategory.name}}</strong>
@@ -72,7 +69,7 @@
                </md-button>
             </md-card-actions>
          </md-card>
-      </div>
+      </div>-->
    </md-content>
    <md-content ng-show="$ctrl.seeRestaurant" flex="50">
       <md-card>
