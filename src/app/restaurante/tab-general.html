@@ -54,12 +54,9 @@
                 </div>
                 <!--***VISTA PREVIA***-->
                 <div flex>
-                    <h3 style="text-align: center">Menu</h3>
-                    <span class="md-headline">Rest. Carne con Papa</span>
-                    <p>{{$ctrl.hola}}</p>
-                    <h4>Categorias Habilitadas</h4>
+                    <h3 style="text-align: center">Categorias Habilitadas</h3>
                     <md-list flex>
-                        <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="topping.wanted" ng-click="$ctrl.goTo(2)">
+                        <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="topping.wanted" ng-click="$ctrl.goTo($ctrl.config.selectedIndex)">
                             <span>{{ topping.name}}</span>   
                         </md-list-item>
                     </md-list>
