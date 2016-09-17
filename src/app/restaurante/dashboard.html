@@ -3,14 +3,18 @@
     <md-tabs md-selected="$ctrl.config.selectedIndex" md-dynamic-height md-border-bottom md-autoselect md-stretch-tabs="always">
         <!--************************ CATEGORIA *************************************-->
         <md-tab ng-disabled="$ctrl.config.beAble[0].able" label="Categorias" ng-click="$ctrl.goTo(1)">
-            <tab-general config="$ctrl.config"></tab-general>
+            <tab-general config="$ctrl.config" categoria="$ctrl.categoria"></tab-general>
         </md-tab>
         <!--************************/FIN CATEGORIA *************************************-->
         <!--************************PLATOS *************************************-->
-        <md-tab ng-disabled="$ctrl.config.beAble[1].able" label="Platos" ng-click="$ctrl.goTo(2)">
-            <tab-general config="$ctrl.config"></tab-general>
+        <md-tab ng-disabled="$ctrl.config.beAble[1].able" label="Platos & Combos" ng-click="$ctrl.goTo(2)">
+            <tab-multiple config="$ctrl.config" categoria="$ctrl.categoria" comida="$ctrl.comida"></tab-multiple>
         </md-tab>
-        <md-tab ng-disabled="$ctrl.config.beAble[2].able" label="Ingredientes" ng-click="$ctrl.goTo(3)"></md-tab>
-        <md-tab ng-disabled="$ctrl.config.beAble[3].able" label="Adicionales" ng-click="$ctrl.goTo(4)"></md-tab>
+        <md-tab ng-disabled="$ctrl.config.beAble[2].able" label="Ingredientes" ng-click="$ctrl.goTo(3)">
+            <tab-simple config="$ctrl.config" categoria="$ctrl.categoria" comida="$ctrl.comida"></tab-simple>
+        </md-tab>
+        <md-tab ng-disabled="$ctrl.config.beAble[3].able" label="Adicionales" ng-click="$ctrl.goTo(4)">
+            <tab-simple config="$ctrl.config" categoria="$ctrl.categoria" comida="$ctrl.comida"></tab-simple>
+        </md-tab>
     </md-tabs>
 </md-content> 

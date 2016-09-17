@@ -12,3 +12,12 @@
     background-size: cover;
     min-height: 700px !important;
 }
+.chip-red{
+    background: rgba(185, 3, 3, 0.28)
+}
+.chip-green{
+    background: rgba(0, 255, 57, 0.28)
+}
+.chip-purple{
+    background: rgba(168, 91, 199, 0.31)
+}

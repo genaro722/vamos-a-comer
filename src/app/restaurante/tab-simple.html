@@ -1,0 +1,75 @@
+<h1 style="margin-bottom: 5px; margin-top: 5px">{{$ctrl.comida}}</h1>
+<div layout="row" flex layout-padding style="margin-top: 0px">
+    <!--****BUSQUEDA***-->
+    <div flex>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Ingrediente Nuevo</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===3">Adicional Nuevo</h3>
+        <md-autocomplete
+            ng-disabled="$ctrl.isDisabled"
+            md-no-cache="$ctrl.noCache"
+            md-selected-item="$ctrl.selectedItem"
+            md-search-text-change="$ctrl.searchTextChange(ctrl.searchText)"
+            md-search-text="$ctrl.searchText"
+            md-selected-item-change="$ctrl.selectedItemChange(item)"
+            md-items="item in $ctrl.querySearch($ctrl.searchText)"
+            md-item-text="item.display"
+            md-min-length="0"
+            placeholder="What is your favorite US state?" style="margin-bottom: 50px">
+            <md-item-template>
+                <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+            </md-item-template>
+            <md-not-found>
+                No states matching "{{$ctrl.searchText}}" were found.
+                <a ng-click="$ctrl.newState($ctrl.searchText)">Create a new one!</a>
+            </md-not-found>
+        </md-autocomplete>
+        <form name="projectForm">
+            <md-input-container class="md-block">
+                <label>Descripcion</label>
+                <textarea md-maxlength="30" required md-no-asterisk name="description" ng-model="$ctrl.hola" rows="3"></textarea>
+                <div ng-messages="projectForm.description.$error">
+                    <div ng-message="required">Es necesario que Ingrese la Descripción.</div>
+                    <div ng-message="md-maxlength">El de la Descripcion puede tener maximo 30 caracteres.</div>
+                </div>
+            </md-input-container>
+        </form>
+        <div layout="row" layout-align="center center">
+            <md-button class="md-raised md-primary">Agregar</md-button>
+        </div>
+    </div>
+    <!--***SELECCIONADO***-->
+    <div flex="45">
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Mis Ingredientes</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===3">Mis Adicionales</h3>
+        <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
+            <md-list>
+                <!--<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>-->
+                <md-list-item>
+                    <p></p>
+                    Habilitar
+                </md-list-item>
+                <md-list-item ng-repeat="topping in $ctrl.toppings">
+                    <p> {{ topping.name}} </p>
+                    <md-button class="md-icon-button" aria-label="Use Android" ng-click="$ctrl.dialogoEdit()">
+                        <md-tooltip md-visible="editar">Editar</md-tooltip>
+                        <i class="fa fa-pencil"></i>
+                    </md-button>
+                    <md-switch ng-model="topping.wanted" aria-label="Switch 1" ng-change="$ctrl.habilitar(topping)">
+                    </md-switch>
+                    <md-checkbox class="md-secondary" ng-model="topping.wanted" ng-hide="true">
+                    </md-checkbox>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+    <!--***VISTA PREVIA***-->
+    <div flex="25">
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Ingredientes Habilitados</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===3">Adicionales Habilitados</h3>
+        <md-list flex>
+            <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="topping.wanted">
+                <span>{{ topping.name}}</span>   
+            </md-list-item>
+        </md-list>
+    </div>
+</div>
