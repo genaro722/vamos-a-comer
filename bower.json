@@ -13,7 +13,8 @@
     "components-font-awesome": "*",
     "oclazyload": "*",
     "angular-google-maps": "2.3.2",
-    "angular-material": "1.1.1"
+    "angular-material": "1.1.1",
+    "angular-tour":"0.2.5"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0"

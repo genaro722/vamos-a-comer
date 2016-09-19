@@ -9,8 +9,17 @@ angular
             }
         });
 
-function tabGeneralCtrl($q, $timeout, $log) {
-
+function tabGeneralCtrl($q, $timeout, $log, $scope) {
+    $scope.currentStep = 1;
+    $scope.tourEnded = function () {
+        console.log("TERMINO");
+    };
+    $scope.tourComplete = function () {
+        console.log("TERMINO2");
+    };
+    $scope.openTour = function () {
+        console.log("aquiii2");
+    };
     var $ctrl = this;
     $ctrl.config = {};
     $ctrl.config.beAble = [{able: false, numero: 1}, {able: true, numero: 2}, {able: true, numero: 3}, {able: true, numero: 4}];
@@ -32,7 +41,7 @@ function tabGeneralCtrl($q, $timeout, $log) {
 
     $ctrl.goTo = function (numb, item) {
         numb = numb + 2;
-        $ctrl.categoria=item.name;
+        $ctrl.categoria = item.name;
 //        localStorage.getItem("pase.fit.storage-roles");
         localStorage.setItem("vamosacomer.storage-item", JSON.stringify(item));
         console.log(numb);

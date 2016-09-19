@@ -6,6 +6,7 @@ angular
    'angular-jwt', 
    'restangular',
    'ngFacebook',
-   "oc.lazyLoad", 
+   "oc.lazyLoad",
+   'angular-tour',
    'uiGmapgoogle-maps'])
   .service('todoService', TodoService);

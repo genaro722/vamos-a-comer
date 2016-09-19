@@ -1,7 +1,14 @@
+<div layout="row" layout-align="end rigth" flex>
+    <md-button class="md-icon-button" aria-label="Informacion"  ng-click="openTour()">
+    <i class="fa fa-exclamation-circle"></i>
+    </md-button>
+</div>
+<!--<tour step="currentStep">
+</tour>-->
 <div layout="row" flex layout-padding style="margin-top: 0px">
     <!--****BUSQUEDA***-->
     <div flex>
-        <h3 style="text-align: center">Nueva Categoria</h3>
+        <h3 style="text-align: center" id="tip1" class="magic-button">Nueva Categoria</h3>
         <md-autocomplete
             ng-disabled="$ctrl.isDisabled"
             md-no-cache="$ctrl.noCache"
@@ -37,7 +44,7 @@
     </div>
     <!--***SELECCIONADO***-->
     <div flex="45">
-        <h3 style="text-align: center">Mis Categorias</h3>
+        <h3 style="text-align: center"  id="tip2">Mis Categorias</h3>
         <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
             <md-list>
                 <!--<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>-->
@@ -81,3 +88,20 @@
         </md-list>
     </div>
 </div>
+
+<tour step="currentStep" post-tour="tourEnded()" tour-complete="tourComplete()">
+  <virtual-step 
+    tourtip="En esta seccion Agregaras una categoria como favorita"
+    tourtip-next-label="Siguiente"
+    tourtip-placement="bottom"
+    tourtip-element="#tip1"
+    on-proceed="openTour()"
+    use-source-scope="false"
+    tourtip-step="1"></virtual-step>
+  <virtual-step 
+    tourtip="En esta seccion Agregaras una categoria como favorita"
+    tourtip-next-label="Siguiente"
+    tourtip-placement="bottom"
+    tourtip-element="#tip2"
+    tourtip-step="2"></virtual-step>
+</tour>
