@@ -10,7 +10,7 @@ angular
         });
 
 function tabGeneralCtrl($q, $timeout, $log, $scope) {
-    $scope.currentStep = 1;
+    $scope.currentStep = 0;
     $scope.tourEnded = function () {
         console.log("TERMINO");
     };
@@ -18,6 +18,7 @@ function tabGeneralCtrl($q, $timeout, $log, $scope) {
         console.log("TERMINO2");
     };
     $scope.openTour = function () {
+        $scope.currentStep = 1;
         console.log("aquiii2");
     };
     var $ctrl = this;

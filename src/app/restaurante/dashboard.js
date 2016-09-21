@@ -11,9 +11,9 @@ function dashboardRestauranteCtrl($q, $timeout, $log) {
     
     $ctrl.goTo = function (numb) {
         for (var i = 0; i < $ctrl.config.beAble.length; i++) {
-            if ($ctrl.config.beAble[i].numero<=numb) {
+            if ($ctrl.config.beAble[i].numero===numb && numb===1) {
                 $ctrl.config.beAble[i].able=false;
-            }else{
+            }else if(numb===1){
                 $ctrl.config.beAble[i].able=true;
             }
         }

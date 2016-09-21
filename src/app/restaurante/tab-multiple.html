@@ -92,7 +92,7 @@
 
                             <md-button class="md-icon-button" aria-label="Use Android">
                                 <md-tooltip md-visible="editar">Ver Detalle</md-tooltip>
-                                <i class="fa fa-plus"></i>
+                                <i class="fa fa-search-plus"></i>
                             </md-button>
                             <md-checkbox class="md-secondary" ng-model="topping.wanted">
                             </md-checkbox>
@@ -125,11 +125,11 @@
                                         ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
                                         {{ topping.porcentaje}}</md-chip>
                                 </md-chips>
-                                <md-button class="md-icon-button" aria-label="Adicionales" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 1)">
+                                <md-button class="md-icon-button" aria-label="Adicionales" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 3)">
                                     <md-tooltip md-visible="Ingredientes">Agregar Adicionales</md-tooltip>
                                     <i class="fa fa-plus"></i>
                                 </md-button>
-                                <md-button class="md-icon-button" aria-label="Ingredientes" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 0)">
+                                <md-button class="md-icon-button" aria-label="Ingredientes" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 2)">
                                     <md-tooltip md-visible="Ingredientes">Agregar Ingredientes</md-tooltip>
                                     <i class="fa fa-pie-chart"></i>
                                 </md-button>

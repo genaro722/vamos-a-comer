@@ -1,6 +1,6 @@
 <div layout="row" layout-align="end rigth" flex>
     <md-button class="md-icon-button" aria-label="Informacion"  ng-click="openTour()">
-    <i class="fa fa-exclamation-circle"></i>
+        <i class="fa fa-exclamation-circle"></i>
     </md-button>
 </div>
 <!--<tour step="currentStep">
@@ -59,7 +59,7 @@
                                         </md-button>-->
                     <md-chips>
                         <md-chip 
-        ng-class="{'chip-red':topping.porcentaje<50, 'chip-purple':topping.porcentaje>=50 && topping.porcentaje<75, 'chip-green':topping.porcentaje>=75 }">
+                            ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
                             {{ topping.porcentaje}}</md-chip>
                     </md-chips>
                     <md-button class="md-icon-button" aria-label="Use Android" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping)">
@@ -90,18 +90,17 @@
 </div>
 
 <tour step="currentStep" post-tour="tourEnded()" tour-complete="tourComplete()">
-  <virtual-step 
-    tourtip="En esta seccion Agregaras una categoria como favorita"
-    tourtip-next-label="Siguiente"
-    tourtip-placement="bottom"
-    tourtip-element="#tip1"
-    on-proceed="openTour()"
-    use-source-scope="false"
-    tourtip-step="1"></virtual-step>
-  <virtual-step 
-    tourtip="En esta seccion Agregaras una categoria como favorita"
-    tourtip-next-label="Siguiente"
-    tourtip-placement="bottom"
-    tourtip-element="#tip2"
-    tourtip-step="2"></virtual-step>
+    <virtual-step 
+        ng-show="currentStep === 1"
+        tourtip="En esta seccion Agregaras una categoria como favorita"
+        tourtip-next-label="Siguiente"
+        tourtip-placement="bottom"
+        tourtip-element="#tip1"
+        tourtip-step="1"></virtual-step>
+    <virtual-step 
+        tourtip="En esta seccion Agregaras una categoria como favorita"
+        tourtip-next-label="Siguiente"
+        tourtip-placement="bottom"
+        tourtip-element="#tip2"
+        tourtip-step="2"></virtual-step>
 </tour>

@@ -14,7 +14,7 @@ function tabMultipleCtrl($q, $timeout, $log) {
 
     var $ctrl = this;
     $ctrl.config = {};
-    $ctrl.config.beAble = [{able: false, numero: 1}, {able: true, numero: 2}, {able: true, numero: 3}, {able: true, numero: 4}];
+    $ctrl.config.beAble = [{able: false, numero: 1}, {able: true, numero: 2}, {able: true, numero: 3}];
     $ctrl.config.selectedIndex = 0;
     $ctrl.toppings = [
         {name: 'Comida Para niños', wanted: true, porcentaje: 80},
@@ -32,18 +32,15 @@ function tabMultipleCtrl($q, $timeout, $log) {
     $ctrl.hola = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
     $ctrl.goTo = function (numb, item, more) {
-        numb = numb + 2 + more;
+        numb = numb + more;
         $ctrl.comida=item.name;
         console.log(numb);
         for (var i = 0; i < $ctrl.config.beAble.length; i++) {
-            if ($ctrl.config.beAble[i].numero <= numb) {
+//            if ($ctrl.config.beAble[i].numero <= numb) {
                 $ctrl.config.beAble[i].able = false;
-            } else {
-                $ctrl.config.beAble[i].able = true;
-            }
-        }
-        if (numb===4) {
-            $ctrl.config.beAble[2].able=true;
+//            } else {
+//                $ctrl.config.beAble[i].able = true;
+//            }
         }
         $ctrl.config.selectedIndex = numb;
     };
