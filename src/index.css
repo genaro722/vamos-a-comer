@@ -22,5 +22,8 @@
     background: rgba(168, 91, 199, 0.31)
 }
 .white-text{
-    color: #fff;
+    color: #fff !important;
+}
+.capitalize{
+    text-transform: capitalize;
 }

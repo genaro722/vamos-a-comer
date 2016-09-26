@@ -17,17 +17,17 @@ function tabMultipleCtrl($q, $timeout, $log) {
     $ctrl.config.beAble = [{able: false, numero: 1}, {able: true, numero: 2}, {able: true, numero: 3}];
     $ctrl.config.selectedIndex = 0;
     $ctrl.toppings = [
-        {name: 'Comida Para niños', wanted: true, porcentaje: 80},
-        {name: 'Bebidas', wanted: true, porcentaje: 70},
-        {name: 'Pastas', wanted: true, porcentaje: 85},
-        {name: 'Granos', wanted: false, porcentaje: 20},
-        {name: 'Sausage', wanted: false, porcentaje: 30},
-        {name: 'Parrillas', wanted: true, porcentaje: 90},
-        {name: 'Black Olives', wanted: true, porcentaje: 75},
-        {name: 'Desayunos', wanted: false, porcentaje: 20},
-        {name: 'Almuerzos', wanted: false, porcentaje: 45},
-        {name: 'Cena', wanted: true, porcentaje: 80},
-        {name: 'Green Peppers', wanted: false, porcentaje: 20}
+        {name: 'Comida Para niños', wanted: true, porcentaje: 80, price:1000},
+        {name: 'Bebidas', wanted: true, porcentaje: 70, price: 1500},
+        {name: 'Pastas', wanted: true, porcentaje: 85, price:3000},
+        {name: 'Granos', wanted: false, porcentaje: 20, price:500},
+        {name: 'Sausage', wanted: false, porcentaje: 30, price: 2970},
+        {name: 'Parrillas', wanted: true, porcentaje: 90, price: 1450},
+        {name: 'Black Olives', wanted: true, porcentaje: 75, price: 5000},
+        {name: 'Desayunos', wanted: false, porcentaje: 20, price: 6300},
+        {name: 'Almuerzos', wanted: false, porcentaje: 45, price:4560},
+        {name: 'Cena', wanted: true, porcentaje: 80, price:3420},
+        {name: 'Green Peppers', wanted: false, porcentaje: 20, price:950}
     ];
     $ctrl.hola = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
