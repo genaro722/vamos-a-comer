@@ -14,35 +14,48 @@ function tabMultipleCtrl($q, $timeout, $log) {
 
     var $ctrl = this;
     $ctrl.config = {};
+    $ctrl.todos = true;
     $ctrl.config.beAble = [{able: false, numero: 1}, {able: true, numero: 2}, {able: true, numero: 3}];
     $ctrl.config.selectedIndex = 0;
     $ctrl.toppings = [
-        {name: 'Comida Para niños', wanted: true, porcentaje: 80, price:1000},
+        {name: 'Comida Para niños', wanted: true, porcentaje: 80, price: 1000},
         {name: 'Bebidas', wanted: true, porcentaje: 70, price: 1500},
-        {name: 'Pastas', wanted: true, porcentaje: 85, price:3000},
-        {name: 'Granos', wanted: false, porcentaje: 20, price:500},
+        {name: 'Pastas', wanted: true, porcentaje: 85, price: 3000},
+        {name: 'Granos', wanted: false, porcentaje: 20, price: 500},
         {name: 'Sausage', wanted: false, porcentaje: 30, price: 2970},
         {name: 'Parrillas', wanted: true, porcentaje: 90, price: 1450},
         {name: 'Black Olives', wanted: true, porcentaje: 75, price: 5000},
         {name: 'Desayunos', wanted: false, porcentaje: 20, price: 6300},
-        {name: 'Almuerzos', wanted: false, porcentaje: 45, price:4560},
-        {name: 'Cena', wanted: true, porcentaje: 80, price:3420},
-        {name: 'Green Peppers', wanted: false, porcentaje: 20, price:950}
+        {name: 'Almuerzos', wanted: false, porcentaje: 45, price: 4560},
+        {name: 'Cena', wanted: true, porcentaje: 80, price: 3420},
+        {name: 'Green Peppers', wanted: false, porcentaje: 20, price: 950}
     ];
     $ctrl.hola = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
     $ctrl.goTo = function (numb, item, more) {
         numb = numb + more;
-        $ctrl.comida=item.name;
+        $ctrl.comida = item.name;
         console.log(numb);
         for (var i = 0; i < $ctrl.config.beAble.length; i++) {
 //            if ($ctrl.config.beAble[i].numero <= numb) {
-                $ctrl.config.beAble[i].able = false;
+            $ctrl.config.beAble[i].able = false;
 //            } else {
 //                $ctrl.config.beAble[i].able = true;
 //            }
         }
         $ctrl.config.selectedIndex = numb;
+    };
+
+    $ctrl.filtrando = function () {
+        if ($ctrl.filtro === '0') {
+            $ctrl.todos = true;
+        } else if ($ctrl.filtro === '1') {
+            $ctrl.todos = false;
+            $ctrl.algunos=true;
+        } else {
+            $ctrl.todos = false;
+            $ctrl.algunos=false;
+        }
     };
 
     $ctrl.habilitar = function (categoria) {

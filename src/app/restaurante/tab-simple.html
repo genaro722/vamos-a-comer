@@ -2,8 +2,8 @@
 <div layout="row" flex layout-padding style="margin-top: 0px">
     <!--****BUSQUEDA***-->
     <div flex>
-        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Ingrediente Nuevo</h3>
-        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===3">Adicional Nuevo</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===1">Ingrediente Nuevo</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Adicional Nuevo</h3>
         <md-autocomplete
             ng-disabled="$ctrl.isDisabled"
             md-no-cache="$ctrl.noCache"
@@ -39,8 +39,8 @@
     </div>
     <!--***SELECCIONADO***-->
     <div flex="45">
-        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Mis Ingredientes</h3>
-        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===3">Mis Adicionales</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===1">Mis Ingredientes</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Mis Adicionales</h3>
         <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
             <md-list>
                 <!--<md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>-->
@@ -64,8 +64,8 @@
     </div>
     <!--***VISTA PREVIA***-->
     <div flex="25">
-        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Ingredientes Habilitados</h3>
-        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===3">Adicionales Habilitados</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===1">Ingredientes Habilitados</h3>
+        <h3 style="text-align: center" ng-show="$ctrl.config.selectedIndex===2">Adicionales Habilitados</h3>
         <md-list flex>
             <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="topping.wanted">
                 <span>{{ topping.name}}</span>   

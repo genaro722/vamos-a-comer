@@ -1,5 +1,5 @@
 .ara-footer{
-   margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .angular-google-map-container { height: 400px; }
@@ -26,4 +26,37 @@
 }
 .capitalize{
     text-transform: capitalize;
+}
+.label-primary{
+    font-size: 12px;
+    background: rgb(255, 152, 0);
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: white;
+}
+.label-accent{
+    font-size: 12px;
+    background: rgb(151, 236, 53);
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: white;
+}
+.label-info{
+    font-size: 12px;
+    background: rgb(53, 192, 236);
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: white;
+}
+.label-default{
+    font-size: 12px;
+    background: rgba(56, 56, 56, 0.38);
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: white;
+}
+.input-search{
+    background: rgba(0, 0, 0, 0.22) !important;
+    padding: 2px 5px !important;
+    border-radius: 10px !important;   
 }
