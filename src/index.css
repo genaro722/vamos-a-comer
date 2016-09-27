@@ -27,33 +27,32 @@
 .capitalize{
     text-transform: capitalize;
 }
-.label-primary{
+.label{
+    color:#000;
+    margin-left: 5px;
     font-size: 12px;
-    background: rgb(255, 152, 0);
     padding: 3px 8px;
+    border: 1px solid rgba(130, 123, 123, 0.62);
     border-radius: 10px;
+}
+.label-primary{
     color: white;
+    background: rgba(255, 152, 0, 0.75);
+    border: 1px solid rgba(204, 72, 13, 0.89);
 }
 .label-accent{
-    font-size: 12px;
-    background: rgb(151, 236, 53);
-    padding: 3px 8px;
-    border-radius: 10px;
     color: white;
+    background: rgba(151, 236, 53, 0.75);
+    border: 1px solid rgba(3, 125, 62, 0.89);
 }
 .label-info{
-    font-size: 12px;
-    background: rgb(53, 192, 236);
-    padding: 3px 8px;
-    border-radius: 10px;
     color: white;
+    background: rgba(53, 192, 236, 0.75);
+    border: 1px solid rgba(18, 105, 165, 0.89);
 }
 .label-default{
-    font-size: 12px;
-    background: rgba(56, 56, 56, 0.38);
-    padding: 3px 8px;
-    border-radius: 10px;
     color: white;
+    background: rgba(56, 56, 56, 0.38);
 }
 .input-search{
     background: rgba(0, 0, 0, 0.22) !important;

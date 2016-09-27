@@ -1,6 +1,8 @@
-<md-button class="md-icon-button" aria-label="Informacion"  ng-click="openTour()" style="position: absolute; right: 5%">
-    <i class="fa fa-exclamation-circle"></i>
-</md-button>
+<div style="position: absolute; right: 5%">
+    <md-button class="" aria-label="Informacion"  ng-click="openTour()">
+        <i class="fa fa-exclamation-circle"></i>  GUIA
+    </md-button>
+</div>
 <div layout="row" flex layout-padding style="margin-top: 0px">
 
     <div flex>
@@ -29,7 +31,7 @@
                 </md-button>
             </div>
             <div flex="30">
-                
+
             </div>
             <div flex="10">
                 <md-button class="md-raised md-primary white-text capitalize" aria-label="agregar">
@@ -38,29 +40,32 @@
             </div>
         </div>
         <md-tabs md-dynamic-height md-border-bottom md-autoselect md-stretch-tabs="always">
-            <md-tab label="Plato">
+            <md-tab label="Plato (15)">
                 <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
                     <div flex>
                         <md-list>
-                            <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos===true || (topping.wanted===$ctrl.algunos)">
-                                <p> {{ topping.name}} - {{topping.price}}Bs. 
-                                    <label class="label-primary" ng-repeat="i in [0, 1, 2]">Ingredientes</label>
-                                    <label class="label-accent" ng-repeat="i in [0, 1]">Adicionales</label>
-                                    <label class="label-default">...</label>
+                            <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
+                                <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 50px; height: 50px; margin-right: 10px"/>
+                                <p> 
+                                    {{ topping.name}} <label class="label">Precio: Bs.{{topping.price}}</label>
+                                    <label class="label label-primary" ng-repeat="i in [0, 1, 2]">Ingredientes</label>
+                                    <label class="label label-default">+3</label>
+                                    <label class="label label-accent" ng-repeat="i in [0, 1]">Adicionales</label>
+                                    <label class="label label-default">+1</label>
                                 </p>
                                 <md-chips>
                                     <md-chip 
                                         ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
                                         {{ topping.porcentaje}}</md-chip>
                                 </md-chips>
-<!--                                <md-button class="md-icon-button" aria-label="Adicionales" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 2)">
-                                    <md-tooltip md-visible="Ingredientes">Agregar Adicionales</md-tooltip>
-                                    <i class="fa fa-plus"></i>
-                                </md-button>
-                                <md-button class="md-icon-button" aria-label="Ingredientes" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 1)">
-                                    <md-tooltip md-visible="Ingredientes">Agregar Ingredientes</md-tooltip>
-                                    <i class="fa fa-pie-chart"></i>
-                                </md-button>-->
+                                <!--                                <md-button class="md-icon-button" aria-label="Adicionales" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 2)">
+                                                                    <md-tooltip md-visible="Ingredientes">Agregar Adicionales</md-tooltip>
+                                                                    <i class="fa fa-plus"></i>
+                                                                </md-button>
+                                                                <md-button class="md-icon-button" aria-label="Ingredientes" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 1)">
+                                                                    <md-tooltip md-visible="Ingredientes">Agregar Ingredientes</md-tooltip>
+                                                                    <i class="fa fa-pie-chart"></i>
+                                                                </md-button>-->
                                 <md-button class="md-icon-button" aria-label="Editar" ng-click="$ctrl.dialogoEdit()">
                                     <md-tooltip md-visible="editar">Editar</md-tooltip>
                                     <i class="fa fa-pencil"></i>
@@ -74,14 +79,16 @@
                     </div>
                 </md-content>
             </md-tab>
-            <md-tab label="Combos">
+            <md-tab label="Combos (8)">
                 <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
                     <md-list>
-                        <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos===true || (topping.wanted===$ctrl.algunos)">
-                            <p> {{ topping.name}}  - {{topping.price}}Bs.
-                                <label class="label-primary" ng-repeat="i in [0, 1, 2]">Platos</label>
-                                <label class="label-info" ng-repeat="i in [0, 1]">Bebidas</label>
-                                <label class="label-default">...</label>
+                        <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
+                                <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 50px; height: 50px; margin-right: 10px"/>
+                            <p> {{ topping.name}}  <label class="label">Precio: Bs.{{topping.price}}</label>
+                                <label class="label label-primary" ng-repeat="i in [0, 1, 2]">Platos</label>
+                                <label class="label label-default">+4</label>
+                                <label class="label label-info" ng-repeat="i in [0, 1]">Bebidas</label>
+                                <label class="label label-default">+1</label>
                             </p>
                             <md-chips>
                                 <md-chip 
@@ -99,6 +106,9 @@
                         </md-list-item>
                     </md-list>
                 </md-content>  
+            </md-tab>
+            <md-tab label="Bebidas (0)">
+                
             </md-tab>
         </md-tabs>
     </div>
