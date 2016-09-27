@@ -67,6 +67,12 @@ function tabMultipleCtrl($q, $timeout, $log) {
         }
     };
 
+    $ctrl.limpiar=function(){
+        $ctrl.filtro='0';
+        $ctrl.buscar='';
+        $ctrl.filtrando();
+    };
+    
     $ctrl.dialogoEdit = function () {
         alert("Ventana modal para editar nombre y descripcion");
     };
