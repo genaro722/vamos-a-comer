@@ -44,7 +44,49 @@
                 <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
                     <div flex>
                         <md-list>
-                            <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
+                            <md-list-item  ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)" style=" padding-top: 5px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04);">
+                                <div flex layout="row">
+                                    <div flex="8">
+                                        <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+                                    </div>
+                                    <div layout="column" flex="15" layout-align="center start">
+                                        <div>{{ topping.name}}</div>
+                                        <div> <label class="label">Precio: Bs.{{topping.price}}</label></div>
+                                    </div>
+                                    <div flex="15">
+                                        <label class="label label-primary" ng-repeat="i in [0, 1, 2]">Ingredientes</label>
+                                        <label class="label label-default">+3</label>
+                                    </div>
+                                    <div flex="15">
+                                        <label class="label label-accent" ng-repeat="i in [0, 1]">Adicionales</label>
+                                        <label class="label label-default">+1</label>
+                                    </div>
+                                    <div flex></div>
+                                    <div flex="20" layout="row" layout-align="center center">
+                                        <div>
+                                            <md-chips>
+                                                <md-chip 
+                                                    ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
+                                                    {{ topping.porcentaje}}
+                                                </md-chip>
+                                            </md-chips>
+                                        </div>
+                                        <div>
+                                            <md-button class="md-icon-button" aria-label="Editar" ng-click="$ctrl.dialogoEdit()">
+                                                <md-tooltip md-visible="editar">Editar</md-tooltip>
+                                                <i class="fa fa-pencil"></i>
+                                            </md-button>
+                                        </div>
+                                        <div>
+                                            <md-switch ng-model="topping.wanted" aria-label="Switch 1" ng-change="$ctrl.habilitar(topping)">
+                                            </md-switch>
+                                            <md-checkbox class="md-secondary" ng-model="topping.wanted" ng-hide="true">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-list-item>
+<!--                            <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
                                 <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
                                 <p> 
                                     {{ topping.name}} <label class="label">Precio: Bs.{{topping.price}}</label>
@@ -56,16 +98,9 @@
                                 <md-chips>
                                     <md-chip 
                                         ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
-                                        {{ topping.porcentaje}}</md-chip>
+                                        {{ topping.porcentaje}}
+                                    </md-chip>
                                 </md-chips>
-                                <!--                                <md-button class="md-icon-button" aria-label="Adicionales" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 2)">
-                                                                    <md-tooltip md-visible="Ingredientes">Agregar Adicionales</md-tooltip>
-                                                                    <i class="fa fa-plus"></i>
-                                                                </md-button>
-                                                                <md-button class="md-icon-button" aria-label="Ingredientes" ng-click="$ctrl.goTo($ctrl.config.selectedIndex, topping, 1)">
-                                                                    <md-tooltip md-visible="Ingredientes">Agregar Ingredientes</md-tooltip>
-                                                                    <i class="fa fa-pie-chart"></i>
-                                                                </md-button>-->
                                 <md-button class="md-icon-button" aria-label="Editar" ng-click="$ctrl.dialogoEdit()">
                                     <md-tooltip md-visible="editar">Editar</md-tooltip>
                                     <i class="fa fa-pencil"></i>
@@ -74,7 +109,7 @@
                                 </md-switch>
                                 <md-checkbox class="md-secondary" ng-model="topping.wanted" ng-hide="true">
                                 </md-checkbox>
-                            </md-list-item>
+                            </md-list-item>-->
                         </md-list>
                     </div>
                 </md-content>
@@ -83,7 +118,7 @@
                 <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
                     <md-list>
                         <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
-                                <img ng-src="http://www.metro.pr/locales/proponen-eliminar-refrescos-en-combos-de-comida-rapida/pGXndv!kC9BCaEqhDITY/182297915.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+                            <img ng-src="http://www.metro.pr/locales/proponen-eliminar-refrescos-en-combos-de-comida-rapida/pGXndv!kC9BCaEqhDITY/182297915.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
                             <p> {{ topping.name}}  <label class="label">Precio: Bs.{{topping.price}}</label>
                                 <label class="label label-primary" ng-repeat="i in [0, 1, 2]">Platos</label>
                                 <label class="label label-default">+4</label>
@@ -111,7 +146,7 @@
                 <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
                     <md-list>
                         <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
-                                <img ng-src="http://tusejemplos.com/wp-content/uploads/2016/02/mp_industrias_bebidas-700x460.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+                            <img ng-src="http://tusejemplos.com/wp-content/uploads/2016/02/mp_industrias_bebidas-700x460.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
                             <p> {{ topping.name}}  <label class="label">Precio: Bs.{{topping.price}}</label>
                             </p>
                             <md-chips>

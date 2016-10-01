@@ -29,32 +29,47 @@
 }
 .label{
     color:#000;
-    margin-left: 5px;
+    /*margin-left: 5px;*/
     font-size: 12px;
     padding: 3px 8px;
     border: 1px solid rgba(130, 123, 123, 0.62);
     border-radius: 10px;
 }
 .label-primary{
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
     color: white;
     background: rgba(255, 152, 0, 0.75);
     border: 1px solid rgba(204, 72, 13, 0.89);
 }
 .label-accent{
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
     color: white;
     background: rgba(151, 236, 53, 0.75);
     border: 1px solid rgba(3, 125, 62, 0.89);
 }
 .label-info{
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
     color: white;
     background: rgba(53, 192, 236, 0.75);
     border: 1px solid rgba(18, 105, 165, 0.89);
 }
 .label-default{
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
     color: white;
     background: rgba(56, 56, 56, 0.38);
 }
 .input-search{
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
     background: rgba(0, 0, 0, 0.22) !important;
     padding: 2px 5px !important;
     border-radius: 10px !important;   
