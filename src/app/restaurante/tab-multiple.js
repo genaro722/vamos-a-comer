@@ -8,9 +8,9 @@ angular
                 categoria: '=',
                 comida: '='
             }
-        });
+        })
 
-function tabMultipleCtrl($q, $timeout, $log) {
+function tabMultipleCtrl($q, $timeout, $log, $mdBottomSheet, $scope) {
 
     var $ctrl = this;
     $ctrl.config = {};
@@ -18,17 +18,27 @@ function tabMultipleCtrl($q, $timeout, $log) {
     $ctrl.config.beAble = [{able: false, numero: 1}, {able: true, numero: 2}, {able: true, numero: 3}];
     $ctrl.config.selectedIndex = 0;
     $ctrl.toppings = [
-        {name: 'Comida Para niños', wanted: true, porcentaje: 80, price: 1000},
-        {name: 'Bebidas', wanted: true, porcentaje: 70, price: 1500},
-        {name: 'Pastas', wanted: true, porcentaje: 85, price: 3000},
-        {name: 'Granos', wanted: false, porcentaje: 20, price: 500},
-        {name: 'Sausage', wanted: false, porcentaje: 30, price: 2970},
-        {name: 'Parrillas', wanted: true, porcentaje: 90, price: 1450},
-        {name: 'Black Olives', wanted: true, porcentaje: 75, price: 5000},
-        {name: 'Desayunos', wanted: false, porcentaje: 20, price: 6300},
-        {name: 'Almuerzos', wanted: false, porcentaje: 45, price: 4560},
-        {name: 'Cena', wanted: true, porcentaje: 80, price: 3420},
-        {name: 'Green Peppers', wanted: false, porcentaje: 20, price: 950}
+        {name: 'hamburguesa', wanted: true, porcentaje: 80, price: 1000, img: "app/img/comidas/comida-2.jpg",
+            ingredientes: [{name: "Huevo"}, {name: "Tomate"}, {name: "Tocineta"}, {name: "Lechuga"}, {name: "Carne"}],
+            adicionales: [{name: "Pollo"}, {name: "Alfalfa"}, {name: "Papas"}]},
+        {name: 'arepa', wanted: true, porcentaje: 70, price: 1500, img: "app/img/comidas/comida-3.jpg",
+            ingredientes: [{name: "Queso"}, {name: "Jamon"}, {name: "Huevo"}],
+            adicionales: [{name: "Pollo"}, {name: "Carne Molida"}]},
+        {name: 'almuerzo', wanted: true, porcentaje: 85, price: 3000, img: "app/img/comidas/comida-1.jpg",
+            ingredientes: [{name: "Carne"}, {name: "Arroz"}, {name: "Caraotas"}, {name: "Tajadas"}, {name: "Pure de Papa"}],
+            adicionales: [{name: "Queso de Mano"}, {name: "Pollo"}, {name: "Aguacate"}, {name: "chuleta"}, {name: "Yuca"}]},
+        {name: 'Sushi', wanted: false, porcentaje: 20, price: 500, img: "app/img/comidas/comida-5.jpg",
+            ingredientes: [],
+            adicionales: []},
+        {name: 'Hot Dog', wanted: false, porcentaje: 60, price: 2970, img: "app/img/comidas/comida-4.jpg",
+            ingredientes: [{name: "Salchicha"}, {name: "Queso"}],
+            adicionales: [{name: "Salsas"}]},
+        {name: 'Pasticho', wanted: true, porcentaje: 65, price: 1450, img: "app/img/comidas/comida-7.png",
+            ingredientes: [{name: "Pasta"}, {name: "Queso"}, {name: "Jamon"}, {name: "Carne Molida"}],
+            adicionales: [{name: "Algo"}]},
+        {name: 'Pizza', wanted: false, porcentaje: 50, price: 950, img: "app/img/comidas/comida-6.jpg",
+            ingredientes: [{name: "Queso"}],
+            adicionales: [{name: "Jamon"}]}
     ];
     $ctrl.hola = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -51,10 +61,10 @@ function tabMultipleCtrl($q, $timeout, $log) {
             $ctrl.todos = true;
         } else if ($ctrl.filtro === '1') {
             $ctrl.todos = false;
-            $ctrl.algunos=true;
+            $ctrl.algunos = true;
         } else {
             $ctrl.todos = false;
-            $ctrl.algunos=false;
+            $ctrl.algunos = false;
         }
     };
 
@@ -67,12 +77,36 @@ function tabMultipleCtrl($q, $timeout, $log) {
         }
     };
 
-    $ctrl.limpiar=function(){
-        $ctrl.filtro='0';
-        $ctrl.buscar='';
+    $ctrl.limpiar = function () {
+        $ctrl.filtro = '0';
+        $ctrl.search = '';
         $ctrl.filtrando();
     };
-    
+
+    $ctrl.alert = '';
+    $ctrl.showListBottomSheet = function (numb, objetos, nombre) {
+        var pagina = "";
+        if (numb === 1) {
+            pagina = 'app/components/modals/bottom-sheet-list.html';
+            objetos = [];
+            nombre = '';
+        }
+        if (numb === 2) {
+            pagina = 'app/components/modals/objetos.html';
+        }
+        $ctrl.alert = '';
+        $mdBottomSheet.show({
+            locals: {
+                objetos: objetos,
+                nombre: nombre
+            },
+            templateUrl: pagina,
+            controller: 'ListBottomSheetCtrl'
+        }).then(function (clickedItem) {
+            $ctrl.alert = clickedItem['name'] + ' clicked!';
+        });
+    };
+
     $ctrl.dialogoEdit = function () {
         alert("Ventana modal para editar nombre y descripcion");
     };
@@ -152,3 +186,16 @@ function tabMultipleCtrl($q, $timeout, $log) {
 
     }
 }
+angular.module('app').controller('ListBottomSheetCtrl', function ($scope, $mdBottomSheet, objetos, nombre) {
+    $scope.nombre = nombre;
+        $scope.items2 = [
+            {name: 'Comida', icon: 'fa-cutlery'},
+            {name: 'Combo', icon: 'fa-shopping-basket'},
+            {name: 'Bebida', icon: 'fa-coffee'}
+        ];
+        $scope.items = objetos;
+    $scope.listItemClick = function ($index) {
+        var clickedItem = $scope.items2[$index];
+        $mdBottomSheet.hide(clickedItem);
+    };
+});

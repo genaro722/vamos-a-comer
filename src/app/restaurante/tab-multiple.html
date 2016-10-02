@@ -3,6 +3,9 @@
         <i class="fa fa-exclamation-circle"></i>  GUIA
     </md-button>
 </div>
+<!--<div class="alerta">
+    <span>Debe Completar al menos 50% de su categoria</span>
+</div>-->
 <div layout="row" flex layout-padding style="margin-top: 0px">
 
     <div flex>
@@ -11,7 +14,7 @@
             <div flex="40">
                 <md-input-container class="md-block" style="margin-bottom: 0px; margin-top: 0px">
                     <label>Buscar <i class="fa fa-search"></i></label>
-                    <input type="search" name="Buscar"  class="input-search" ng-model="$ctrl.buscar">
+                    <input type="search" name="Buscar"  class="input-search" ng-model="$ctrl.search">
                 </md-input-container>
             </div>
             <div flex="10">
@@ -31,35 +34,38 @@
                 </md-button>
             </div>
             <div flex="30">
-
+{{$ctrl.alert}}
             </div>
             <div flex="10">
-                <md-button class="md-raised md-primary white-text capitalize" aria-label="agregar">
+                <md-button class="md-raised md-primary white-text capitalize" aria-label="agregar" ng-click="$ctrl.showListBottomSheet(1)">
                     Agregar
                 </md-button>
             </div>
         </div>
         <md-tabs md-dynamic-height md-border-bottom md-autoselect md-stretch-tabs="always">
-            <md-tab label="Plato (15)">
+            <md-tab label="Plato ({{$ctrl.toppings.length}})">
                 <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
                     <div flex>
                         <md-list>
-                            <md-list-item  ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)" style=" padding-top: 5px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04);">
+                            <md-list-item  ng-repeat="topping in $ctrl.toppings | filter:$ctrl.search" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)" style=" padding-top: 5px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04);">
                                 <div flex layout="row">
                                     <div flex="8">
-                                        <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+<!--                                        <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>-->
+                                        <img ng-src="{{topping.img}}" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
                                     </div>
                                     <div layout="column" flex="15" layout-align="center start">
-                                        <div>{{ topping.name}}</div>
+                                        <div>{{ topping.name | maxLength : 10 | capitalize}}</div>
                                         <div> <label class="label">Precio: Bs.{{topping.price}}</label></div>
                                     </div>
-                                    <div flex="15">
-                                        <label class="label label-primary" ng-repeat="i in [0, 1, 2]">Ingredientes</label>
-                                        <label class="label label-default">+3</label>
-                                    </div>
-                                    <div flex="15">
-                                        <label class="label label-accent" ng-repeat="i in [0, 1]">Adicionales</label>
-                                        <label class="label label-default">+1</label>
+                                    <div flex="30" layout="row" layout-align="start center">
+                                        <label class="label label-default" ng-show="topping.ingredientes.length===0">No ha ingresado Ingredientes</label>
+                                        <label class="label label-primary" ng-repeat="ing in topping.ingredientes track by $index" ng-hide="$index >1">{{ing.name}}</label>
+                                        <label class="label label-default" style="cursor: pointer" 
+                                               ng-show="topping.ingredientes.length>3" ng-click="$ctrl.showListBottomSheet(2,topping.ingredientes,'ingredientes')">+{{topping.ingredientes.length-2}}</label>
+                                        <label class="label label-default" ng-show="topping.adicionales.length===0">No ha ingresado Adicionales</label>
+                                        <label class="label label-accent" ng-repeat="add in topping.adicionales track by $index" ng-hide="$index >1">{{add.name}}</label>
+                                        <label class="label label-default" style="cursor: pointer" 
+                                               ng-show="topping.adicionales.length>2" ng-click="$ctrl.showListBottomSheet(2,topping.adicionales,'adicionales')">+{{topping.adicionales.length-2}}</label>
                                     </div>
                                     <div flex></div>
                                     <div flex="20" layout="row" layout-align="center center">

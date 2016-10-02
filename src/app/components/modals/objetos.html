@@ -1,0 +1,21 @@
+<md-bottom-sheet class="md-list md-has-header">
+    <md-subheader ng-cloak>Lista de {{nombre}}</md-subheader>
+    <md-content style="overflow: overlay; max-height: 200px">
+        <md-list ng-cloak>
+            <md-list-item ng-repeat="item in items" style="float: left">
+                <label class="label label-primary" ng-show="nombre==='ingredientes'">
+                    {{item.name}}
+                </label>
+                <label class="label label-accent" ng-show="nombre==='adicionales'">
+                    {{item.name}}
+                </label>
+<!--                <md-button
+                    ng-click="listItemClick($index)"
+                    class="md-list-item-content" >
+                    <i class="fa {{item.icon}}"></i>
+                    <span class="md-inline-list-icon-label">{{ item.name}}</span>
+                </md-button>-->
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-bottom-sheet>
