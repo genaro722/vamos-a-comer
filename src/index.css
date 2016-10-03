@@ -50,7 +50,7 @@
     margin-right: 5px;
     margin-bottom: 5px;
     color: white;
-    background: rgba(151, 236, 53, 0.75);
+    background: rgba(93, 169, 6, 0.77);
     border: 1px solid rgba(3, 125, 62, 0.89);
 }
 .label-info{
@@ -101,40 +101,9 @@ md-tabs .md-tab {
 md-input-container label:not(.md-no-float):not(.md-container-ignore), md-input-container .md-placeholder {
     padding-left: 20px;
 }
-/********* BOTTOM SHEET LIST ************/
-.bottomSheetdemoBasicUsage .md-inline-list-icon-label {
-  display: inline-block;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: -10px;
-  height: 24px;
-  vertical-align: middle; }
-
-.bottomSheetdemoBasicUsage .md-grid-item-content {
-  height: 90px;
-  padding-top: 10px; }
-
-.bottomSheetdemoBasicUsage .md-grid-item-content md-icon {
-  height: 48px;
-  width: 48px; }
-
-.bottomSheetdemoBasicUsage .md-grid-text {
-  padding-bottom: 5px; }
-
-.bottomSheetdemoBasicUsage md-list-item, .bottomSheetdemoBasicUsage md-list-item .md-list-item-inner {
-  min-height: 48px; }
-
-.bottomSheetdemoBasicUsage h2 {
-  line-height: 36px;
-  padding-top: 10px; }
-
-.bottomSheetdemoBasicUsage .md-subheader .md-subheader-inner {
-  padding: 0; }
-
-.bottomSheetdemoBasicUsage md-toast .md-toast-content {
-  background-color: #B14141; }
-
-.bottomSheetdemoBasicUsage md-toast > * {
-  font-weight: bolder; }
+.btn-margin {
+    margin: 0px;
+}
 md-bottom-sheet {
-    position: fixed;}
+    position: fixed;
+}

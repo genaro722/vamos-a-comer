@@ -1,20 +1,179 @@
-<md-content layout="column" style="min-height: 600px">
-    <!--<md-content flex layout="column" style="min-height: 600px">-->
-    <!--<md-tabs md-selected="$ctrl.config.selectedIndex" md-dynamic-height md-border-bottom md-autoselect md-stretch-tabs="always">-->
-        <!--************************ CATEGORIA *************************************-->
-<!--        <md-tab ng-disabled="$ctrl.config.beAble[0].able" label="Categorias" ng-click="$ctrl.goTo(1)">
-            <tab-general config="$ctrl.config" categoria="$ctrl.categoria"></tab-general>
-        </md-tab>-->
-        <!--************************/FIN CATEGORIA *************************************-->
-        <!--************************PLATOS *************************************-->
-        <!--<md-tab ng-disabled="$ctrl.config.beAble[0].able" label="Platos & Combos" ng-click="$ctrl.goTo(1)">-->
-            <tab-multiple config="$ctrl.config" categoria="$ctrl.categoria" comida="$ctrl.comida"></tab-multiple>
-        <!--</md-tab>-->
-<!--        <md-tab ng-disabled="$ctrl.config.beAble[1].able" label="Ingredientes" ng-click="$ctrl.goTo(2)">
-            <tab-simple config="$ctrl.config" categoria="$ctrl.categoria" comida="$ctrl.comida"></tab-simple>
-        </md-tab>
-        <md-tab ng-disabled="$ctrl.config.beAble[2].able" label="Adicionales" ng-click="$ctrl.goTo(3)">
-            <tab-simple config="$ctrl.config" categoria="$ctrl.categoria" comida="$ctrl.comida"></tab-simple>
-        </md-tab>-->
-    <!--</md-tabs>-->
-</md-content> 
+<div style="position: absolute; right: 5%">
+    <md-button class="" aria-label="Informacion"  ng-click="openTour()">
+        <i class="fa fa-exclamation-circle"></i>  GUIA
+    </md-button>
+</div>
+<!--<div class="alerta">
+    <span>Debe Completar al menos 50% de su categoria</span>
+</div>-->
+<div layout="row" flex layout-padding style="margin-top: 0px">
+
+    <div flex>
+        <h3 style="text-align: center">Mi Menu</h3>
+        <div layout="row">
+            <div flex="40">
+                <md-input-container class="md-block" style="margin-bottom: 0px; margin-top: 0px">
+                    <label>Buscar <i class="fa fa-search"></i></label>
+                    <input type="search" name="Buscar"  class="input-search" ng-model="$ctrl.search">
+                </md-input-container>
+            </div>
+            <div flex="10">
+                <md-input-container class="md-block" style="margin-bottom: 0px; margin-top: 0px">
+                    <label>Filtro</label>
+                    <md-select ng-model="$ctrl.filtro" aria-label="filtro" ng-change="$ctrl.filtrando()">
+                        <md-option selected value="0">Todos</md-option>
+                        <md-option value="1">Habilitados</md-option>
+                        <md-option value="2">Inhabilitados</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+            <div flex="10">
+                <md-button class="btn-margin" aria-label="limbiar" ng-click="$ctrl.limpiar()" style="min-width: 44px;color: rgba(0, 0, 0, 0.42)">
+                    <md-tooltip md-visible="limpiar">Limpiar Busqueda</md-tooltip>
+                    <i class="fa fa-eraser"></i>
+                </md-button>
+            </div>
+            <div flex="20">
+            </div>
+            <div flex="20">
+                <md-button class="md-raised md-primary white-text capitalize md-hue-2" aria-label="agregar" ng-click="$ctrl.showListBottomSheet(1)">
+                    Agregar
+                </md-button>
+                <md-button class="md-raised md-primary white-text capitalize" aria-label="vista previa">
+                    Vista Previa
+                </md-button>
+            </div>
+        </div>
+        <md-tabs md-dynamic-height md-border-bottom md-autoselect md-stretch-tabs="always">
+            <md-tab label="Plato ({{$ctrl.toppings.length}})">
+                <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
+                    <div flex>
+                        <md-list>
+                            <md-list-item  ng-repeat="topping in $ctrl.toppings | filter:$ctrl.search" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)" style=" padding-top: 5px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04);">
+                                <div flex layout="row">
+                                    <div flex="8">
+<!--                                        <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>-->
+                                        <img ng-src="{{topping.img}}" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+                                    </div>
+                                    <div layout="column" flex="15" layout-align="center start">
+                                        <div>{{ topping.name | maxLength : 10 | capitalize}}</div>
+                                        <div> <label class="label">Precio: Bs.{{topping.price}}</label></div>
+                                    </div>
+                                    <div flex="30" layout="row" layout-align="start center">
+                                        <label class="label label-default" ng-show="topping.ingredientes.length===0">No ha ingresado Ingredientes</label>
+                                        <label class="label label-primary" ng-repeat="ing in topping.ingredientes track by $index" ng-hide="$index >1">{{ing.name}}</label>
+                                        <label class="label label-default" style="cursor: pointer" 
+                                               ng-show="topping.ingredientes.length>2" ng-click="$ctrl.showListBottomSheet(2,topping.ingredientes,'ingredientes')">+{{topping.ingredientes.length-2}}</label>
+                                        <label class="label label-default" ng-show="topping.adicionales.length===0">No ha ingresado Adicionales</label>
+                                        <label class="label label-accent" ng-repeat="add in topping.adicionales track by $index" ng-hide="$index >1">{{add.name}}</label>
+                                        <label class="label label-default" style="cursor: pointer" 
+                                               ng-show="topping.adicionales.length>2" ng-click="$ctrl.showListBottomSheet(2,topping.adicionales,'adicionales')">+{{topping.adicionales.length-2}}</label>
+                                    </div>
+                                    <div flex></div>
+                                    <div flex="20" layout="row" layout-align="center center">
+                                        <div>
+                                            <md-chips>
+                                                <md-chip 
+                                                    ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
+                                                    {{ topping.porcentaje}}
+                                                </md-chip>
+                                            </md-chips>
+                                        </div>
+                                        <div>
+                                            <md-button class="md-icon-button" aria-label="Editar" ng-click="$ctrl.dialogoEdit()">
+                                                <md-tooltip md-visible="editar">Editar</md-tooltip>
+                                                <i class="fa fa-pencil"></i>
+                                            </md-button>
+                                        </div>
+                                        <div>
+                                            <md-switch ng-model="topping.wanted" aria-label="Switch 1" ng-change="$ctrl.habilitar(topping)">
+                                            </md-switch>
+                                            <md-checkbox class="md-secondary" ng-model="topping.wanted" ng-hide="true">
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-list-item>
+<!--                            <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
+                                <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+                                <p> 
+                                    {{ topping.name}} <label class="label">Precio: Bs.{{topping.price}}</label>
+                                    <label class="label label-primary" ng-repeat="i in [0, 1, 2]">Ingredientes</label>
+                                    <label class="label label-default">+3</label>
+                                    <label class="label label-accent" ng-repeat="i in [0, 1]">Adicionales</label>
+                                    <label class="label label-default">+1</label>
+                                </p>
+                                <md-chips>
+                                    <md-chip 
+                                        ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
+                                        {{ topping.porcentaje}}
+                                    </md-chip>
+                                </md-chips>
+                                <md-button class="md-icon-button" aria-label="Editar" ng-click="$ctrl.dialogoEdit()">
+                                    <md-tooltip md-visible="editar">Editar</md-tooltip>
+                                    <i class="fa fa-pencil"></i>
+                                </md-button>
+                                <md-switch ng-model="topping.wanted" aria-label="Switch 1" ng-change="$ctrl.habilitar(topping)">
+                                </md-switch>
+                                <md-checkbox class="md-secondary" ng-model="topping.wanted" ng-hide="true">
+                                </md-checkbox>
+                            </md-list-item>-->
+                        </md-list>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="Combos (8)">
+                <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
+                    <md-list>
+                        <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
+                            <img ng-src="http://www.metro.pr/locales/proponen-eliminar-refrescos-en-combos-de-comida-rapida/pGXndv!kC9BCaEqhDITY/182297915.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+                            <p> {{ topping.name}}  <label class="label">Precio: Bs.{{topping.price}}</label>
+                                <label class="label label-primary" ng-repeat="i in [0, 1, 2]">Platos</label>
+                                <label class="label label-default">+4</label>
+                                <label class="label label-info" ng-repeat="i in [0, 1]">Bebidas</label>
+                                <label class="label label-default">+1</label>
+                            </p>
+                            <md-chips>
+                                <md-chip 
+                                    ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
+                                    {{ topping.porcentaje}}</md-chip>
+                            </md-chips>
+                            <md-button class="md-icon-button" aria-label="Use Android" ng-click="$ctrl.dialogoEdit()">
+                                <md-tooltip md-visible="editar">Editar</md-tooltip>
+                                <i class="fa fa-pencil"></i>
+                            </md-button>
+                            <md-switch ng-model="topping.wanted" aria-label="Switch 1" ng-change="$ctrl.habilitar(topping)">
+                            </md-switch>
+                            <md-checkbox class="md-secondary" ng-model="topping.wanted" ng-hide="true">
+                            </md-checkbox>
+                        </md-list-item>
+                    </md-list>
+                </md-content>  
+            </md-tab>
+            <md-tab label="Bebidas (20)">
+                <md-content  flex layout="column" layout-padding style="overflow: overlay; max-height: 500px">
+                    <md-list>
+                        <md-list-item ng-repeat="topping in $ctrl.toppings" ng-show="$ctrl.todos === true || (topping.wanted === $ctrl.algunos)">
+                            <img ng-src="http://tusejemplos.com/wp-content/uploads/2016/02/mp_industrias_bebidas-700x460.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
+                            <p> {{ topping.name}}  <label class="label">Precio: Bs.{{topping.price}}</label>
+                            </p>
+                            <md-chips>
+                                <md-chip 
+                                    ng-class="{'chip-red':topping.porcentaje < 50, 'chip-purple':topping.porcentaje >= 50 && topping.porcentaje < 75, 'chip-green':topping.porcentaje >= 75 }">
+                                    {{ topping.porcentaje}}</md-chip>
+                            </md-chips>
+                            <md-button class="md-icon-button" aria-label="Use Android" ng-click="$ctrl.dialogoEdit()">
+                                <md-tooltip md-visible="editar">Editar</md-tooltip>
+                                <i class="fa fa-pencil"></i>
+                            </md-button>
+                            <md-switch ng-model="topping.wanted" aria-label="Switch 1" ng-change="$ctrl.habilitar(topping)">
+                            </md-switch>
+                            <md-checkbox class="md-secondary" ng-model="topping.wanted" ng-hide="true">
+                            </md-checkbox>
+                        </md-list-item>
+                    </md-list>
+                </md-content>  
+            </md-tab>
+        </md-tabs>
+    </div>
+</div>
