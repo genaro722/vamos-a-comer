@@ -5,13 +5,15 @@ angular
             controller: dashboardRestauranteCtrl
         });
 
-function dashboardRestauranteCtrl($q, $timeout, $log, $mdBottomSheet, $scope) {
+function dashboardRestauranteCtrl($q, $timeout, $log, $mdBottomSheet, $scope, $mdDialog, $element) {
 
     var $ctrl = this;
     $ctrl.config = {};
     $ctrl.todos = true;
     $ctrl.config.beAble = [{able: false, numero: 1}, {able: true, numero: 2}, {able: true, numero: 3}];
     $ctrl.config.selectedIndex = 0;
+    $ctrl.status = '  ';
+    $ctrl.customFullscreen = false;
     $ctrl.toppings = [
         {name: 'hamburguesa', wanted: false, porcentaje: 80, price: 1000, img: "app/img/comidas/comida-2.jpg",
             ingredientes: [{name: "Huevo"}, {name: "Tomate"}, {name: "Tocineta"}, {name: "Lechuga"}, {name: "Carne"}],
@@ -98,8 +100,31 @@ function dashboardRestauranteCtrl($q, $timeout, $log, $mdBottomSheet, $scope) {
             templateUrl: pagina,
             controller: 'ListBottomSheetCtrl'
         }).then(function (clickedItem) {
-            $ctrl.alert = clickedItem['name'] + ' clicked!';
+            if (clickedItem['name'] === 'Plato') {
+                $ctrl.agregarModal();
+            }
+//            $ctrl.alert = clickedItem['name'] + ' clicked!';
         });
+    };
+
+    $ctrl.agregarModal = function (ev) {
+        $mdDialog.show({
+            locals: {
+                $element: $element
+            },
+            controller: DialogController,
+            templateUrl: 'app/components/modals/agregarModal.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        })
+                .then(function (answer) {
+                    $scope.status = 'You said the information was "' + answer + '".';
+                }, function () {
+                    $scope.status = 'You cancelled the dialog.';
+                });
+        console.log("AGREGAR");
     };
 
     $ctrl.dialogoEdit = function () {
@@ -183,14 +208,38 @@ function dashboardRestauranteCtrl($q, $timeout, $log, $mdBottomSheet, $scope) {
 }
 angular.module('app').controller('ListBottomSheetCtrl', function ($scope, $mdBottomSheet, objetos, nombre) {
     $scope.nombre = nombre;
-        $scope.items2 = [
-            {name: 'Plato', icon: 'fa-cutlery'},
-            {name: 'Combo', icon: 'fa-shopping-basket'},
-            {name: 'Bebida', icon: 'fa-coffee'}
-        ];
-        $scope.items = objetos;
+    $scope.items2 = [
+        {name: 'Plato', icon: 'fa-cutlery'},
+        {name: 'Combo', icon: 'fa-shopping-basket'},
+        {name: 'Bebida', icon: 'fa-coffee'}
+    ];
+    $scope.items = objetos;
     $scope.listItemClick = function ($index) {
         var clickedItem = $scope.items2[$index];
         $mdBottomSheet.hide(clickedItem);
     };
 });
+function DialogController($scope, $mdDialog, $element) {
+    $scope.vegetables = ['Corn', 'Onions', 'Kale', 'Arugula', 'Peas', 'Zucchini'];
+    $scope.searchTerm="";
+    $scope.clearSearchTerm = function () {
+        $scope.searchTerm = '';
+    };
+    // The md-select directive eats keydown events for some quick select
+    // logic. Since we have a search input here, we don't need that logic.
+    $element.find('input').on('keydown', function (ev) {
+        ev.stopPropagation();
+    });
+
+    $scope.hide = function () {
+        $mdDialog.hide();
+    };
+
+    $scope.cancel = function () {
+        $mdDialog.cancel();
+    };
+
+    $scope.answer = function (answer) {
+        $mdDialog.hide(answer);
+    };
+}

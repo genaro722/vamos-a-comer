@@ -51,13 +51,13 @@ function tabSimpleCtrl($q, $timeout, $log) {
         if (categoria.porcentaje > 50) {
 
         } else {
-            alert("Debe Completar al menos 50% de su categoria");
+//            alert("Debe Completar al menos 50% de su categoria");
             categoria.wanted = false;
         }
     };
 
     $ctrl.dialogoEdit = function () {
-        alert("Ventana modal para editar nombre y descripcion");
+//        alert("Ventana modal para editar nombre y descripcion");
     };
 //    *****AUTOCOMPLETE***
     $ctrl.simulateQuery = true;
@@ -71,7 +71,7 @@ function tabSimpleCtrl($q, $timeout, $log) {
     $ctrl.newState = newState;
 
     function newState(state) {
-        alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+//        alert("Sorry! You'll need to create a Constitution for " + state + " first!");
     }
     // ******************************
     // Internal methods
