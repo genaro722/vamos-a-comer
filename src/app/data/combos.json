@@ -1,0 +1,26 @@
+[
+    {"name":"Pollo para las chicas de verdad", "description":"Hola", "price":"5000","img":"app/img/combo/combo-2.png", "wanted": true, "porcentaje": 80,
+        "platos":[
+            {"name":"Pollo Broaster"},
+            {"name":"Papas Fritas"},
+            {"name":"Yuca"},
+            {"name":"Ensalada"}
+            ],
+            "bebidas":[
+                {"name":"Refresco"},
+                {"name":"Refresco"},
+                {"name":"Refresco"}
+            ]
+    },
+    {"name":"Pollo para las chicas de verdad", "description":"Hola", "price":"4000","img":"app/img/combo/combo-1.jpg", "wanted": false, "porcentaje": 65,
+        "platos":[
+            {"name":"Hamburguesa"},
+            {"name":"Papas Fritas"},
+            {"name":"Cotufas"},
+            {"name":"Ensalada"}
+            ],
+            "bebidas":[
+                {"name":"Refresco"}
+            ]
+    }
+]

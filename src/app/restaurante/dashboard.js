@@ -5,7 +5,7 @@ angular
             controller: dashboardRestauranteCtrl
         });
 
-function dashboardRestauranteCtrl($q, $timeout, $log, $mdBottomSheet, $scope, $mdDialog, $element) {
+function dashboardRestauranteCtrl($q, $timeout, $log, $mdBottomSheet, $scope, $mdDialog, $element, $http) {
 
     var $ctrl = this;
     $ctrl.config = {};
@@ -14,29 +14,14 @@ function dashboardRestauranteCtrl($q, $timeout, $log, $mdBottomSheet, $scope, $m
     $ctrl.config.selectedIndex = 0;
     $ctrl.status = '  ';
     $ctrl.customFullscreen = false;
-    $ctrl.toppings = [
-        {name: 'hamburguesa', wanted: false, porcentaje: 80, price: 1000, img: "app/img/comidas/comida-2.jpg",
-            ingredientes: [{name: "Huevo"}, {name: "Tomate"}, {name: "Tocineta"}, {name: "Lechuga"}, {name: "Carne"}],
-            adicionales: [{name: "Pollo"}, {name: "Alfalfa"}, {name: "Papas"}]},
-        {name: 'arepa', wanted: true, porcentaje: 70, price: 1500, img: "app/img/comidas/comida-3.jpg",
-            ingredientes: [{name: "Queso"}, {name: "Jamon"}, {name: "Huevo"}],
-            adicionales: [{name: "Pollo"}, {name: "Carne Molida"}]},
-        {name: 'almuerzo', wanted: true, porcentaje: 85, price: 3000, img: "app/img/comidas/comida-1.jpg",
-            ingredientes: [{name: "Carne"}, {name: "Arroz"}, {name: "Caraotas"}, {name: "Tajadas"}, {name: "Pure de Papa"}],
-            adicionales: [{name: "Queso de Mano"}, {name: "Pollo"}, {name: "Aguacate"}, {name: "chuleta"}, {name: "Yuca"}]},
-        {name: 'Sushi', wanted: false, porcentaje: 20, price: 500, img: "app/img/comidas/comida-5.jpg",
-            ingredientes: [],
-            adicionales: []},
-        {name: 'Hot Dog', wanted: false, porcentaje: 60, price: 2970, img: "app/img/comidas/comida-4.jpg",
-            ingredientes: [{name: "Salchicha"}, {name: "Queso"}],
-            adicionales: [{name: "Salsas"}]},
-        {name: 'Pasticho', wanted: true, porcentaje: 65, price: 1450, img: "app/img/comidas/comida-7.png",
-            ingredientes: [{name: "Pasta"}, {name: "Queso"}, {name: "Jamon"}, {name: "Carne Molida"}],
-            adicionales: [{name: "Algo"}]},
-        {name: 'Pizza', wanted: false, porcentaje: 50, price: 950, img: "app/img/comidas/comida-6.jpg",
-            ingredientes: [{name: "Queso"}],
-            adicionales: [{name: "Jamon"}]}
-    ];
+    $http.get('app/data/platos.json').success(function (data) {
+        console.log(data);
+        $ctrl.toppings = data;
+    });
+    $http.get('app/data/combos.json').success(function (c) {
+        console.log(c);
+        $ctrl.combos = c;
+    });
     $ctrl.hola = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
     $ctrl.goTo = function (numb, item, more) {
