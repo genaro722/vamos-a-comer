@@ -53,6 +53,10 @@
                                 <div flex layout="row">
                                     <div flex="8">
                                         <!--                                        <img ng-src="http://www.just-eat.es/blog/wp-content/uploads/2012/01/Brasil.jpg" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>-->
+<!--                                        <div ng-class="{'background-0':topping.porcentaje===0, 'background-10':topping.porcentaje >= 1 && topping.porcentaje < 24,
+                                            'background-25':topping.porcentaje >= 25 && topping.porcentaje < 34, 'background-35':topping.porcentaje >= 35 && topping.porcentaje < 49,
+                                            'background-50':topping.porcentaje >= 50 && topping.porcentaje < 74, 'background-75':topping.porcentaje >= 75 && topping.porcentaje < 89,
+                                            'background-90':topping.porcentaje >= 90 && topping.porcentaje < 99, 'background-100':topping.porcentaje === 100}"></div>-->
                                         <img ng-src="{{topping.img}}" alt="{{topping.name}}" style="width: 75px; height: 75px; margin-right: 10px; margin-bottom: 10px"/>
                                     </div>
                                     <div layout="column" flex="15" layout-align="center start">
@@ -68,6 +72,10 @@
                                         <label class="label label-accent" ng-repeat="add in topping.adicionales track by $index" ng-hide="$index > 1">{{add.name}}</label>
                                         <label class="label label-default" style="cursor: pointer" 
                                                ng-show="topping.adicionales.length > 2" ng-click="$ctrl.showListBottomSheet(2, topping.adicionales, 'adicionales')">+{{topping.adicionales.length - 2}}</label>
+                                    </div>
+                                    <div flex="10" layout="column" layout-align="center center">
+                                        <span>Puntos: {{topping.puntos}}</span>
+                                        <span>Ventas: {{topping.ventas}}</span>
                                     </div>
                                     <div flex></div>
                                     <div flex="20" layout="row" layout-align="center center">

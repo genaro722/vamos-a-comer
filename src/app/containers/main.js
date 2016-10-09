@@ -43,15 +43,64 @@ function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia)
   
   $ctrl.profileMenu = [
     {
-      name: "opcion 1",
-      icon: "account_circle",
+      name: "Mi Perfil",
+      icon: "fa-map-marker",
     action: function(){
         console.log("accion de la opcion 1");
     }
   },
     {
-      name: "opcion 2",
-      icon: "",
+      name: "Mi Menu",
+      icon: "fa-th",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "Mis Ventas",
+      icon: "fa-shopping-cart",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "Cuentas y Estadisticas",
+      icon: "fa-area-chart",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "Mensajeria",
+      icon: "fa-inbox",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "Vista Previa",
+      icon: "fa-arrows-alt",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "Membresias",
+      icon: "fa-credit-card",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "Configuraciones",
+      icon: "fa-gears",
+    action: function(){
+        console.log("accion de la opcion 1");
+    }
+  },
+    {
+      name: "Cerrar Sesion",
+      icon: "fa-power-off",
     action: function(){
         console.log("accion de la opcion 2");
     }}

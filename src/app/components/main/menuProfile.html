@@ -11,7 +11,7 @@
             <md-list-item layout="row" layout-align="center center" ng-repeat="item in $ctrl.menu" >
                 <md-button ng-click="item.action()">
                     <!--<md-icon ng-if="item.icon">{{item.icon}}</md-icon>-->
-                    <md-icon>{{item.icon}}</md-icon>
+                    <i class="fa {{item.icon}}"></i>
                     {{item.name}}        
                 </md-button>
                 <md-divider ng-if="!$last"></md-divider>
