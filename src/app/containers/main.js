@@ -52,7 +52,8 @@ function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia)
     {
       name: "Mi Menu",
       icon: "fa-th",
-    action: function(){
+    action: function(){        
+        $state.go('app.inside.restaurante');
         console.log("accion de la opcion 1");
     }
   },
@@ -60,6 +61,7 @@ function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia)
       name: "Mis Ventas",
       icon: "fa-shopping-cart",
     action: function(){
+        $state.go('app.inside.ventas');
         console.log("accion de la opcion 1");
     }
   },
