@@ -1,0 +1,59 @@
+<md-content flex layout="column" class="">
+    <div layout="row" style="position: absolute; width: 100%; z-index: 2; margin-top: 15%">
+        <div flex></div>
+        <div class="" flex="35" layout="row" layout-align="center center" ng-show='$ctrl.login'
+             style='background: rgba(0, 0, 0, 0.92); padding: 10px'>
+            <md-button flex type="button" class="md-raised md-primary" ng-click="$ctrl.showLogin()">
+                Iniciar sesión
+            </md-button>
+            <md-button flex type="button" class="md-raised md-primary" ui-sref="app.access.pre-register">
+                Registrarse
+            </md-button>
+        </div>
+        <md-card class="" flex="35" layout="column" layout-align="center center" ng-hide='$ctrl.login'
+                 style='background: rgba(0, 0, 0, 0.92); color: white'>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Iniciar sesión</span>
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+                <md-input-container>
+                    <label class='white-text'>Email</label>
+                    <input class='white-text' ng-model="user._username">
+                </md-input-container>
+                <md-input-container>
+                    <label class='white-text'>Password</label>
+                    <input class='white-text' ng-model="user._password" type="password">
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="column" layout-align="start">
+                <md-button class="md-raised md-primary white-text" ng-click="login()">
+                    Iniciar sesión
+                </md-button>
+                <md-button class="md-raised md-mini md-accent" ng-click="login()" ui-sref="app.access.pre-register" style='margin-top: 10px'>
+                    Registrate
+                </md-button>
+            </md-card-actions>
+        </md-card>
+        <div flex></div>
+    </div>
+    <md-grid-list
+        md-cols-xs="3" md-cols-sm="3" md-cols-md="4" md-cols-gt-md="4"
+        md-row-height-gt-md="1:1" md-row-height="2:2"
+        md-gutter="12px" md-gutter-gt-sm="8px" >
+        <md-grid-tile class="gray" ng-repeat='i in $ctrl.imagenes'
+                      style="background: url({{i}});background-size: cover; background-repeat: no-repeat;">
+            <md-grid-tile-footer>
+                <h3> Titulo</h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+
+    </md-grid-list>
+    <!--    <div layout="column">
+            <div flex="100">
+    
+            </div>
+        </div>-->
+</md-content>

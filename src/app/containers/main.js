@@ -73,9 +73,10 @@ function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia)
     }
   },
     {
-      name: "Mensajeria",
+      name: "Contactanos",
       icon: "fa-inbox",
     action: function(){
+        $state.go('app.inside.contactanos');
         console.log("accion de la opcion 1");
     }
   },

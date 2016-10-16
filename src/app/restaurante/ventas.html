@@ -2,19 +2,125 @@
 
     <div flex>
         <md-tabs md-dynamic-height md-border-bottom md-autoselect md-stretch-tabs="always">
-            <md-tab label="Proximas">
-                <md-content style="min-height: 450px; max-height: 550px">
-                    
+            <md-tab label="Pendientes">
+                <md-content  flex layout="column" layout-padding style="overflow: overlay; min-height: 400px; max-height: 450px">
+                    <div flex>
+                        <md-list>
+                            <md-list-item  ng-repeat="topping in [0, 1, 2, 3, 4, 5]" style=" padding-top: 5px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04);">
+                                <div flex layout="row">
+                                    <div flex="8">
+                                        <img ng-src="../app/img/default.jpg"  class="md-avatar" alt="usuario"/>
+                                    </div>
+                                    <div layout="column" flex="25" layout-align="center start">
+                                        <div>Genaro Vegas <small>Codigo:#r89lS6<smal></div>
+                                        <small>Realizado: 15/10/2016</small>
+                                        <small>Para: 15/10/2016 10:15 p.m.</small>
+                                    </div>
+                                    <div flex="30" layout="row" layout-align="start center">
+                                        <label class="label label-primary" ng-repeat="ing in [0,1,2,3] track by $index" >item</label>
+                                    </div>
+                                    <div flex="10" layout="column" layout-align="center center">
+                                        <span>Compras: 10</span>
+                                    </div>
+                                    <div flex></div>
+                                    <div flex="20" layout="row" layout-align="center center">
+                                        <div>
+                                            <md-button class="md-icon-button" aria-label="Editar">
+                                                <md-tooltip md-visible="editar">Notificar</md-tooltip>
+                                                <i class="fa fa-envelope"></i>
+                                            </md-button>
+                                        </div>
+                                        <div>
+                                            <md-button class="md-icon-button" aria-label="Editar">
+                                                <md-tooltip md-visible="editar">Ver Detalle</md-tooltip>
+                                                <i class="fa fa-search"></i>
+                                            </md-button>
+                                        </div>
+                                        <div>
+                                            <small>Atender</small>
+                                            <md-switch  aria-label="Switch 1" style='margin-top: 0px'>
+                                            </md-switch>
+                                            <md-checkbox class="md-secondary"  aria-label="activar" ng-hide="true">
+                                            </md-checkbox>
+                                        </div>
+                                        <div> <label class="label" style="font-size: 16px; font-weight: bold">Bs.8000</label></div>
+                                    </div>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </div>
                 </md-content>
             </md-tab>
-            <md-tab label="Pasadas"> 
-                <md-content style="min-height: 450px; max-height: 550px">
-                    
+            <md-tab label="Atendidas"> 
+                <md-content  flex layout="column" layout-padding style="overflow: overlay; min-height: 400px; max-height: 450px">
+                    <div flex>
+                        <md-list>
+                            <md-list-item  ng-repeat="topping in [0, 1, 2, 3, 4, 5]" style=" padding-top: 5px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04);">
+                                <div flex layout="row">
+                                    <div flex="8">
+                                        <img ng-src="../app/img/default.jpg"  class="md-avatar" alt="usuario"/>
+                                    </div>
+                                    <div layout="column" flex="25" layout-align="center start">
+                                        <div>Genaro Vegas <small>Codigo:#r89lS6<smal></div>
+                                        <small>Realizado: 15/10/2016</small>
+                                        <small>Para: 15/10/2016 10:15 p.m.</small>
+                                    </div>
+                                    <div flex="30" layout="row" layout-align="start center">
+                                        <label class="label label-primary" ng-repeat="ing in [0,1,2,3] track by $index" >item</label>
+                                    </div>
+                                    <div flex="10" layout="column" layout-align="center center">
+                                        <span>Compras: 10</span>
+                                    </div>
+                                    <div flex></div>
+                                    <div flex="20" layout="row" layout-align="center center">
+                                        <div>
+                                            <md-button class="md-icon-button" aria-label="Editar">
+                                                <md-tooltip md-visible="editar">Ver Detalle</md-tooltip>
+                                                <i class="fa fa-search"></i>
+                                            </md-button>
+                                        </div>
+                                        <div> <label class="label" style="font-size: 16px; font-weight: bold">Bs.8000</label></div>
+                                    </div>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </div>
                 </md-content>
             </md-tab>
             <md-tab label="Canceladas"> 
-                <md-content style="min-height: 450px; max-height: 550px">
-                    
+                <md-content  flex layout="column" layout-padding style="overflow: overlay; min-height: 400px; max-height: 450px">
+                    <div flex>
+                        <md-list>
+                            <md-list-item  ng-repeat="topping in [0, 1, 2, 3, 4, 5]" style=" padding-top: 5px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.04);">
+                                <div flex layout="row">
+                                    <div flex="8">
+                                        <img ng-src="../app/img/default.jpg"  class="md-avatar" alt="usuario"/>
+                                    </div>
+                                    <div layout="column" flex="25" layout-align="center start">
+                                        <div>Genaro Vegas <small>Codigo:#r89lS6<smal></div>
+                                        <small>Realizado: 15/10/2016</small>
+                                        <small>Para: 15/10/2016 10:15 p.m.</small>
+                                    </div>
+                                    <div flex="30" layout="row" layout-align="start center">
+                                        <label class="label label-primary" ng-repeat="ing in [0,1,2,3] track by $index" >item</label>
+                                    </div>
+                                    <div flex="10" layout="column" layout-align="center center">
+                                        <span>Compras: 10</span>
+                                    </div>
+                                    <div flex></div>
+                                    <div flex="20" layout="row" layout-align="center center">
+                                        <div>
+                                            <md-button class="md-icon-button" aria-label="Editar">
+                                                <md-tooltip md-visible="editar">Ver Detalle</md-tooltip>
+                                                <i class="fa fa-search"></i>
+                                            </md-button>
+                                        </div>
+                                        <div> <label class="label" style="font-size: 16px; font-weight: bold">Bs.8000</label></div>
+                                    </div>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </div>
                 </md-content>
             </md-tab>
         </md-tabs>
