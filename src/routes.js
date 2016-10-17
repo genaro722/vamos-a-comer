@@ -6,7 +6,7 @@ angular
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
 //  $locationProvider.html5Mode(true).hashPrefix('!');
 //  $urlRouterProvider.otherwise('/access/login');
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/principal');
 
   $stateProvider
           .state('app', {
@@ -26,9 +26,11 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           })
           .state('app.access.login1', {
             url: 'login1',
-//            template: '<login-component></login-component>'
             template: '<login1></login1>'
-//            component: 'login'
+          })
+          .state('app.access.principal', {
+            url: 'principal',
+            template: '<principal></principal>'
           })
           .state('app.access.register', {
             url: 'register',
@@ -60,9 +62,17 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             url: 'restaurante',
             template: '<dashboard-restaurante></dashboard-restaurante>'
           })
+          .state('app.inside.perfilRestaurante', {
+            url: 'perfil',
+            template: '<perfil-restaurante></perfil-restaurante>'
+          })
           .state('app.inside.ventas', {
             url: 'ventasRestaurante',
             template: '<ventas-restaurante></ventas-restaurante>'
+          })
+          .state('app.inside.contactanos', {
+            url: 'contactanos',
+            template: '<contactanos></contactanos>'
           })
           ;
 }

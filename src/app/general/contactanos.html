@@ -1,0 +1,47 @@
+<div layout="row" flex layout-padding style="margin-top: 0px">
+    <div flex>
+        <md-content style='min-height: 500px'>
+            <div layout="row" style="position: absolute; width: 100%; z-index: 2; margin-top: 10%">
+                <div flex></div>
+                <md-card class="" flex="35" layout="column" layout-align="center center"
+                         style='background: rgba(0, 0, 0, 0.92); color: white; padding-bottom: 0px'>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Contactanos</span>
+                        </md-card-title-text>
+                    </md-card-title>
+
+                    <md-card-content style='padding-bottom: 0px'>
+                        <md-input-container style='margin-bottom: 0px'>
+                            <label class='white-text'>Dejanos tu mensaje</label>
+                            <textarea class='white-text' ng-model="user._password" style='background: rgba(147, 147, 147, 0.78); min-width: 300px'
+                                      md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                        </md-input-container>
+                    </md-card-content>
+                    <md-card-actions style="width: 100%">
+                        <div layout="column" layout-align="center end">
+                            <div style="margin-right: 15%">
+                                <md-button flex class="md-raised md-primary white-text" style='margin-bottom: 20px'>
+                                    Enviar
+                                </md-button>
+                            </div>
+                        </div>
+                    </md-card-actions>
+                </md-card>
+                <div flex></div>
+            </div>
+            <md-grid-list
+                md-cols-xs="2" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="4"
+                md-row-height-gt-md="1:1" md-row-height="2:2"
+                md-gutter="12px" md-gutter-gt-sm="8px" >
+                <md-grid-tile class="gray" ng-repeat='i in $ctrl.imagenes'
+                              style="background: url({{i}});background-size: cover; background-repeat: no-repeat;">
+                    <md-grid-tile-footer>
+                        <h3> Titulo</h3>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+
+            </md-grid-list>
+        </md-content>
+    </div>
+</div>
