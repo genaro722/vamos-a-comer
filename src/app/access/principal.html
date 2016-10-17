@@ -3,10 +3,10 @@
         <div flex></div>
         <div class="" flex="35" layout="row" layout-align="center center" ng-show='$ctrl.login'
              style='background: rgba(0, 0, 0, 0.92); padding: 10px'>
-            <md-button flex type="button" class="md-raised md-primary" ng-click="$ctrl.showLogin()">
+            <md-button flex type="button" class="md-raised md-primary white-text" ng-click="$ctrl.showLogin()">
                 Iniciar sesión
             </md-button>
-            <md-button flex type="button" class="md-raised md-primary" ui-sref="app.access.pre-register">
+            <md-button flex type="button" class="md-raised md-primary white-text" ui-sref="app.access.pre-register">
                 Registrarse
             </md-button>
         </div>
@@ -19,13 +19,13 @@
             </md-card-title>
 
             <md-card-content>
-                <md-input-container>
+                <md-input-container style="margin-bottom: 0px">
                     <label class='white-text'>Email</label>
-                    <input class='white-text' ng-model="user._username">
+                    <input class='white-text' ng-model="user._username" style="background: rgba(255, 255, 255, 0.71);border-radius: 2px;">
                 </md-input-container>
-                <md-input-container>
+                <md-input-container style="margin-bottom: 0px">
                     <label class='white-text'>Password</label>
-                    <input class='white-text' ng-model="user._password" type="password">
+                    <input class='white-text' ng-model="user._password" type="password" style="background: rgba(255, 255, 255, 0.71);border-radius: 2px;">
                 </md-input-container>
             </md-card-content>
             <md-card-actions layout="column" layout-align="start">

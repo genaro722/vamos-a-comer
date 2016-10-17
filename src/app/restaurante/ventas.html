@@ -1,5 +1,4 @@
 <div layout="row" flex layout-padding style="margin-top: 0px">
-
     <div flex>
         <md-tabs md-dynamic-height md-border-bottom md-autoselect md-stretch-tabs="always">
             <md-tab label="Pendientes">
@@ -20,7 +19,7 @@
                                         <label class="label label-primary" ng-repeat="ing in [0,1,2,3] track by $index" >item</label>
                                     </div>
                                     <div flex="10" layout="column" layout-align="center center">
-                                        <span>Compras: 10</span>
+                                        <div> <label class="label" style="font-size: 16px; font-weight: bold">Bs.8000</label></div>
                                     </div>
                                     <div flex></div>
                                     <div flex="20" layout="row" layout-align="center center">
@@ -36,14 +35,16 @@
                                                 <i class="fa fa-search"></i>
                                             </md-button>
                                         </div>
-                                        <div>
-                                            <small>Atender</small>
-                                            <md-switch  aria-label="Switch 1" style='margin-top: 0px'>
-                                            </md-switch>
-                                            <md-checkbox class="md-secondary"  aria-label="activar" ng-hide="true">
+                                        <div style="padding-left: 10px;text-align: center;">
+                                            <small>Cancelar</small>
+                                            <md-checkbox  aria-label="activar" style='margin-top: 0px'>
                                             </md-checkbox>
                                         </div>
-                                        <div> <label class="label" style="font-size: 16px; font-weight: bold">Bs.8000</label></div>
+                                        <div style="padding-left: 10px;text-align: center;">
+                                            <small>Atender</small>
+                                            <md-checkbox  aria-label="activar" style='margin-top: 0px'>
+                                            </md-checkbox>
+                                        </div>
                                     </div>
                                 </div>
                             </md-list-item>

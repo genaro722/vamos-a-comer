@@ -62,6 +62,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
             url: 'restaurante',
             template: '<dashboard-restaurante></dashboard-restaurante>'
           })
+          .state('app.inside.perfilRestaurante', {
+            url: 'perfil',
+            template: '<perfil-restaurante></perfil-restaurante>'
+          })
           .state('app.inside.ventas', {
             url: 'ventasRestaurante',
             template: '<ventas-restaurante></ventas-restaurante>'

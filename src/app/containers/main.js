@@ -46,6 +46,7 @@ function mainCtrl($rootScope, $scope, $state, $mdSidenav, $log, $http, $mdMedia)
       name: "Mi Perfil",
       icon: "fa-map-marker",
     action: function(){
+        $state.go('app.inside.perfilRestaurante');
         console.log("accion de la opcion 1");
     }
   },
